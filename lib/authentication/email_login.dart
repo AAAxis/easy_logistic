@@ -4,8 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
-import 'package:driver_app/authentication/add_data.dart';
-import 'package:driver_app/mainScreens/navigation.dart';
+import 'package:easy_logistic/authentication/add_data.dart';
+import 'package:easy_logistic/widgets/Main_bar.dart';
 import '../global/global.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -128,14 +128,14 @@ class _EmailLoginScreenState extends State<EmailLoginScreen> {
 
           // Check if the user exists in Firestore
           DocumentSnapshot userSnapshot = await FirebaseFirestore.instance
-              .collection("barber")
+              .collection("contractors")
               .doc(uid)
               .get();
 
           bool isFirstLogin = !userSnapshot.exists;
           if (isFirstLogin) {
             // If the user doesn't exist in Firestore, create a new document
-            await FirebaseFirestore.instance.collection("barber").doc(uid).set({
+            await FirebaseFirestore.instance.collection("contractors").doc(uid).set({
               "uid": uid,
               "name": "Add Full Name",
               "phone": "Add Phone",
@@ -200,7 +200,7 @@ class _EmailLoginScreenState extends State<EmailLoginScreen> {
                               // Add your logic to navigate to the next screen or perform other actions
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => Navigation()),
+                                MaterialPageRoute(builder: (context) => MainScreen()),
                               );
                             },
                             child: Text('OK'),
@@ -248,7 +248,7 @@ class _EmailLoginScreenState extends State<EmailLoginScreen> {
 
   Future<void> readDataAndSetDataLocally(User currentUser) async {
     await FirebaseFirestore.instance
-        .collection("barber")
+        .collection("contractors")
         .doc(currentUser.uid)
         .get()
         .then((snapshot) async {

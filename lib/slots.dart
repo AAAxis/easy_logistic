@@ -1,4 +1,3 @@
-import 'package:driver_app/mainScreens/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -182,16 +181,6 @@ class _SchedulePageState extends State<SchedulePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Working Hours'),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (c) => Navigation()),
-            );
-          },
-        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -277,7 +266,7 @@ class _SchedulePageState extends State<SchedulePage> {
                                   style: TextStyle(fontSize: 16),
                                 ),
                                 Text(
-                                  '${data['clockIn']} - ${data['clockOut']}',
+                                  'Time ${data['clockIn']} - ${data['clockOut']}',
                                   textAlign: TextAlign.end,
                                   style: TextStyle(color: Colors.grey), // Make time gray
                                 ),

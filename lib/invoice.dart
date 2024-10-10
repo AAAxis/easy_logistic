@@ -303,18 +303,10 @@ class _InvoiceGeneratorState extends State<InvoiceGenerator> with SingleTickerPr
         totalValue >= 5;
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.attach_money), // Replace this with your custom icon
-          onPressed: () {
-            // Logic for the custom icon button
-            // For example, you can open a drawer or navigate to another page
-          },
-        ),
         title: Text('New Payment'),
         bottom: TabBar(
           controller: _tabController,
@@ -323,8 +315,8 @@ class _InvoiceGeneratorState extends State<InvoiceGenerator> with SingleTickerPr
             Tab(text: 'History'),
           ],
         ),
-      ),
 
+      ),
       body: TabBarView(
         controller: _tabController,
         children: [
@@ -341,7 +333,7 @@ class _InvoiceGeneratorState extends State<InvoiceGenerator> with SingleTickerPr
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 5.0),
+          SizedBox(height: 60.0),
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -371,7 +363,7 @@ class _InvoiceGeneratorState extends State<InvoiceGenerator> with SingleTickerPr
                 SizedBox(height: 8.0),
                 Container(
                   width: 300,
-                  height: 450,
+                  height: 500,
                   child: GridView.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,

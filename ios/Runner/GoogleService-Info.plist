@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>868698601721-hse7jtiuk6k4rg6qaalijqc2tglars77.apps.googleusercontent.com</string>
+	<string>868698601721-0svdtu92div7ben3v9q26unr0lemit7s.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.868698601721-hse7jtiuk6k4rg6qaalijqc2tglars77</string>
+	<string>com.googleusercontent.apps.868698601721-0svdtu92div7ben3v9q26unr0lemit7s</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>868698601721-6b169hh5mo0lc70cd6915cn3u5hiuna7.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.wheels.driverapp</string>
+	<string>com.wheels.taxiapp</string>
 	<key>PROJECT_ID</key>
 	<string>bankapp-9798a</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:868698601721:ios:30c8d98e2d214b94854a28</string>
+	<string>1:868698601721:ios:cd3c59fa928a2168854a28</string>
 </dict>
 </plist>

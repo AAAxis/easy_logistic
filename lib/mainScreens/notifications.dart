@@ -1,9 +1,9 @@
-import 'package:driver_app/mainScreens/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:easy_logistic/widgets/Main_bar.dart';
 
 class NotificationScreen extends StatefulWidget {
   const NotificationScreen({Key? key}) : super(key: key);
@@ -71,16 +71,17 @@ class _NotificationScreenState extends State<NotificationScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('QR Code'),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+        title: Text('My Profile'),
+        leading: BackButton(
+          color: Colors.black, // You can customize the color here
           onPressed: () {
             Navigator.pop(context);
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (c) => Navigation()),
+              MaterialPageRoute(builder: (c) => MainScreen()),
             );
           },
         ),

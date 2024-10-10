@@ -1,11 +1,10 @@
 import 'dart:async';
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
-import 'package:driver_app/authentication/auth_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:driver_app/invoice.dart';
-import 'package:driver_app/mainScreens/navigation.dart';
+import 'package:easy_logistic/authentication/auth_screen.dart';
+import 'package:easy_logistic/widgets/Main_bar.dart';
 
 
 class MySplashScreen extends StatefulWidget {
@@ -49,7 +48,7 @@ class _MySplashScreenState extends State<MySplashScreen> {
         // User is authenticated, navigate to the main screen
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => Navigation()),
+          MaterialPageRoute(builder: (context) => MainScreen()),
         );
       } else {
         _requestPermissionManually();
@@ -72,7 +71,7 @@ class _MySplashScreenState extends State<MySplashScreen> {
       },
       child: Material(
         child: Container(
-          color: Colors.black,
+          color: Colors.white,
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -82,7 +81,7 @@ class _MySplashScreenState extends State<MySplashScreen> {
                   child: SizedBox(
                     width: 250,
                     height: 250,
-                    child: Image.asset("images/Preview.png"),
+                    child: Image.asset("images/logo-color.png"),
                   ),
                 ),
                 const SizedBox(height: 30,),

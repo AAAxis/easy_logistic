@@ -1,18 +1,19 @@
-import 'package:driver_app/mainScreens/navigation.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_logistic/widgets/Main_bar.dart';
+
 class YourScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('QR Code'),
+        title: Text('Car Information'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (c) => Navigation()),
+              MaterialPageRoute(builder: (c) => MainScreen()),
             );
           },
         ),

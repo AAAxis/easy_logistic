@@ -1,13 +1,13 @@
-import 'package:driver_app/addcar.dart';
-import 'package:driver_app/mainScreens/bank.dart';
-import 'package:driver_app/mainScreens/my_settings.dart';
-
-import 'package:driver_app/mainScreens/notifications.dart';
-import 'package:driver_app/mainScreens/qr_code.dart';
-import 'package:driver_app/slots.dart';
+import 'package:easy_logistic/invoice.dart';
+import 'package:easy_logistic/mainScreens/addcar.dart';
+import 'package:easy_logistic/mainScreens/notifications.dart';
+import 'package:easy_logistic/mainScreens/qr_code.dart';
+import 'package:easy_logistic/mainScreens/schedule_screen.dart';
+import 'package:easy_logistic/widgets/balance.dart';
+import 'package:easy_logistic/widgets/my_settings.dart';
 import 'package:flutter/material.dart';
-import 'package:driver_app/authentication/auth_screen.dart';
-import 'package:driver_app/global/global.dart';
+import 'package:easy_logistic/authentication/auth_screen.dart';
+import 'package:easy_logistic/global/global.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -65,12 +65,11 @@ class _AccountPageState extends State<AccountPage> {
         children: [
           SizedBox(height: 22.0),
           Image.asset(
-            "images/Preview.png",
+            "images/profile.png",
             width: 400.0,
             height: 250.0,
           ),
           SizedBox(height: 20.0),
-
           ListTile(
             leading: const Icon(Icons.account_circle, color: Colors.black),
             title: const Text(
@@ -86,48 +85,44 @@ class _AccountPageState extends State<AccountPage> {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.savings_outlined, color: Colors.black),
-            title: const Text(
-              "My Bank",
-              style: TextStyle(color: Colors.black),
-            ),
+            leading: Icon(Icons.receipt),
+            title: Text('Create Payment'),
             onTap: () {
-              Navigator.pop(context);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (c) => EditBankScreen()),
-              );
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.local_laundry_service, color: Colors.black),
-            title: const Text(
-              "My Service",
-              style: TextStyle(color: Colors.black),
-            ),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (c) => CarInfoList()),
-              );
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.timelapse, color: Colors.black),
-            title: const Text(
-              "Working Hours",
-              style: TextStyle(color: Colors.black),
-            ),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (c) => SchedulePage()),
+                MaterialPageRoute(builder: (context) => InvoiceGenerator()),
               );
             },
           ),
 
+          ListTile(
+            leading: const Icon(Icons.date_range, color: Colors.black),
+            title: const Text(
+              "Schedudle",
+              style: TextStyle(color: Colors.black),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (c) => ScheduleScreen()),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.currency_bitcoin_outlined, color: Colors.black),
+            title: const Text(
+              "My Balance",
+              style: TextStyle(color: Colors.black),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (c) => PaymentScreen()),
+              );
+            },
+          ),
           ListTile(
             leading: const Icon(Icons.qr_code, color: Colors.black),
             title: const Text(
@@ -143,7 +138,20 @@ class _AccountPageState extends State<AccountPage> {
             },
           ),
 
-
+          ListTile(
+            leading: const Icon(Icons.directions_car_sharp, color: Colors.black),
+            title: const Text(
+              "Vehicle Info",
+              style: TextStyle(color: Colors.black),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (c) => CarInfoList()),
+              );
+            },
+          ),
           ListTile(
             leading: const Icon(Icons.notification_add_outlined, color: Colors.black),
             title: const Text(

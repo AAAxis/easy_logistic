@@ -5,11 +5,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:driver_app/authentication/add_data.dart';
-import 'package:driver_app/authentication/email_login.dart';
-import 'package:driver_app/mainScreens/navigation.dart';
+import 'package:easy_logistic/authentication/add_data.dart';
+import 'package:easy_logistic/authentication/email_login.dart';
+import 'package:easy_logistic/mainScreens/admin.dart';
+import 'package:easy_logistic/widgets/Main_bar.dart';
 import 'package:the_apple_sign_in/the_apple_sign_in.dart';
-import 'package:video_player/video_player.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../global/global.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -23,18 +24,67 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  late VideoPlayerController _controller;
 
-  @override
-  void initState() {
-    super.initState();
-    _controller = VideoPlayerController.asset('images/t.mp4')
-      ..initialize().then((_) {
-        setState(() {}); // Update the UI once the video is initialized
-        _controller.setVolume(0.0); // Mute the video
-        _controller.setLooping(true); // Loop the video
-        _controller.play(); // Play the video
-      });
+  final TextEditingController codeController = TextEditingController();
+
+
+
+  Future<void> loginMerchant() async {
+
+    final enteredCode = codeController.text.trim();
+
+    try {
+      DocumentSnapshot merchantSnapshot =
+      await FirebaseFirestore.instance.collection("merchants").doc(enteredCode).get();
+
+      if (merchantSnapshot.exists) {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('siteToken', enteredCode);
+        Navigator.pop(context);
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (c) => AdminPage()),
+        );
+      } else {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text('Verification Failed'),
+              content: Text('Merchant site not found. Please enter a valid verification code.'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text('OK'),
+                ),
+              ],
+            );
+          },
+        );
+      }
+    } catch (e) {
+      // Handle errors
+      print('Error: $e');
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text('An error occurred. Please try again later.'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
 
@@ -66,14 +116,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 sharedPreferences!.getBool("tracking") ?? false;
 
             DocumentSnapshot userSnapshot = await FirebaseFirestore.instance
-                .collection("barber")
+                .collection("contractors")
                 .doc(uid)
                 .get();
 
             bool isFirstLogin = !userSnapshot.exists;
             if (isFirstLogin) {
               await FirebaseFirestore.instance
-                  .collection("barber")
+                  .collection("contractors")
                   .doc(uid)
                   .set({
                 "uid": uid,
@@ -95,9 +145,11 @@ class _LoginScreenState extends State<LoginScreen> {
               await readDataAndSetDataLocally(userCredential.user!);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Navigation()),
+                MaterialPageRoute(builder: (context) => MainScreen()),
               );
             }
+
+
           }
           break;
         case AuthorizationStatus.error:
@@ -138,7 +190,7 @@ class _LoginScreenState extends State<LoginScreen> {
           String userName = user.displayName ?? "";
 
           DocumentSnapshot userSnapshot = await FirebaseFirestore.instance
-              .collection("barber")
+              .collection("contractors")
               .doc(uid)
               .get();
 
@@ -147,7 +199,7 @@ class _LoginScreenState extends State<LoginScreen> {
             bool trackingPermissionStatus =
                 sharedPreferences!.getBool("tracking") ?? false;
 
-            FirebaseFirestore.instance.collection("barber").doc(uid).set({
+            FirebaseFirestore.instance.collection("contractors").doc(uid).set({
               "uid": uid,
               "email": userEmail,
               "name": userName,
@@ -167,9 +219,11 @@ class _LoginScreenState extends State<LoginScreen> {
             // Navigate to Home Page
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Navigation()),
+              MaterialPageRoute(builder: (context) => MainScreen()),
             );
           }
+
+
         }
       }
     } catch (error) {
@@ -179,10 +233,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<void> readDataAndSetDataLocally(User currentUser) async {
     await FirebaseFirestore.instance
-        .collection("barber")
+        .collection("contractors")
         .doc(currentUser.uid)
         .get()
         .then((snapshot) async {
+
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setString("uid", currentUser.uid);
       await prefs.setString("email", snapshot.data()!["email"]);
@@ -190,148 +245,203 @@ class _LoginScreenState extends State<LoginScreen> {
       await prefs.setString("phone", snapshot.data()!["phone"]);
       await prefs.setString("address", snapshot.data()!["address"]);
       await prefs.setString("status", snapshot.data()!["status"]);
+
     });
   }
-
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          // Video as background
-          Positioned.fill(
-            child: _controller.value.isInitialized
-                ? FittedBox(
-              fit: BoxFit.cover, // Cover the entire screen, keep aspect ratio
-              child: SizedBox(
-                width: _controller.value.size.width,
-                height: _controller.value.size.height,
-                child: VideoPlayer(_controller),
+      backgroundColor: Color(0xffffffff),
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image(
+                image: NetworkImage(
+                  "https://cdn3.iconfinder.com/data/icons/network-and-communications-6/130/291-128.png",
+                ),
+                height: 90,
+                width: 90,
+                fit: BoxFit.cover,
               ),
-            )
-                : Container(color: Colors.black), // Placeholder while loading
-          ),
-
-          // Move the login form to the bottom of the screen
-          Align(
-            alignment: Alignment.bottomCenter, // Align the content to the bottom
-            child: Padding(
-              padding: const EdgeInsets.all(40.0), // Adjust padding to your liking
-              child: Column(
-                mainAxisSize: MainAxisSize.min, // To make sure the column only takes up as much space as its content
-                children: [
-                  if (Platform.isIOS) // Check if the platform is iOS
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(20, 16, 20, 0),
-                      child: OutlinedButton(
-                        onPressed: () {
-                          appleSign();
-                        },
-                        style: OutlinedButton.styleFrom(
-                          side: BorderSide(color: Colors.white),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Continue with Apple",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontStyle: FontStyle.normal,
-                                fontSize: 14,
-                                color: Colors.white,
-                              ),
-                            ),
-                            SizedBox(width: 8),
-                            Image.asset(
-                              'images/apple.png',
-                              width: 50,
-                              height: 50,
-                            ),
-                          ],
-                        ),
-                      ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 8, 0, 30),
+                child: Text(
+                  "Sign In",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 20,
+                    color: Color(0xff3a57e8),
+                  ),
+                ),
+              ),
+              if (Platform.isIOS)
+                Padding(
+                  padding: EdgeInsets.fromLTRB(20, 16, 20, 0),
+                  child: OutlinedButton(
+                    onPressed: appleSign,
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide(color: Colors.black),
                     ),
-
-                  if (Platform.isAndroid) // Check if the platform is Android
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(20, 16, 20, 0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          OutlinedButton(
-                            onPressed: () {
-                              _signInWithGoogle();
-                            },
-                            style: OutlinedButton.styleFrom(
-                              side: BorderSide(color: Colors.white),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Continue with Google",
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Continue with Apple",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(width: 8),
+                        Image.asset(
+                          'images/apple.png',
+                          width: 50,
+                          height: 50,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              if (Platform.isAndroid)
+                Padding(
+                  padding: EdgeInsets.fromLTRB(20, 16, 20, 0),
+                  child: OutlinedButton(
+                    onPressed: _signInWithGoogle,
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide(color: Colors.black),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Continue with Google",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(width: 8),
+                        Image.asset(
+                          'images/google.png',
+                          width: 50,
+                          height: 50,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              if (Platform.isIOS || Platform.isAndroid)
+                Padding(
+                  padding: EdgeInsets.fromLTRB(20, 16, 20, 0),
+                  child: OutlinedButton(
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => EmailLoginScreen()));
+                    },
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide(color: Colors.black),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Continue with Email",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(width: 8),
+                        Icon(
+                          Icons.email,
+                          color: Colors.black,
+                          size: 24,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              SizedBox(height: 16), // Space before the text
+              GestureDetector(
+                onTap: () async {
+                  String? siteToken = sharedPreferences!.getString("siteToken");
+                  if (siteToken != null) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => AdminPage()),
+                    );
+                  } else {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: Text('Admin Panel'),
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              TextFormField(
+                                controller: codeController,
+                                decoration: InputDecoration(
+                                  labelText: 'Security Code',
+                                ),
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter the verification code';
+                                  }
+                                  return null;
+                                },
+                              ),
+                              SizedBox(height: 18),
+                              GestureDetector(
+                                onTap: () {
+                                  const url = 'https://polskoydm.pythonanywhere.com/merchant_register';
+                                  launch(url);
+                                },
+                                child: Text(
+                                  "I Don't have code",
                                   style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 14,
-                                    color: Colors.white,
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                SizedBox(width: 8),
-                                Image.asset(
-                                  'images/google.png',
-                                  width: 50,
-                                  height: 50,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-
-                  if (Platform.isIOS || Platform.isAndroid)
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(20, 16, 20, 0),
-                      child: OutlinedButton(
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(
-                              builder: (context) => EmailLoginScreen()));
-                        },
-                        style: OutlinedButton.styleFrom(
-                          side: BorderSide(color: Colors.white),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Continue with Email",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontStyle: FontStyle.normal,
-                                fontSize: 14,
-                                color: Colors.white,
                               ),
-                            ),
-                            SizedBox(width: 8),
-                            Icon(
-                              Icons.email,
-                              color: Colors.white,
-                              size: 24,
+                            ],
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                loginMerchant();
+                              },
+                              child: Text('Submit'),
                             ),
                           ],
-                        ),
-                      ),
+                        );
+                      },
+                    );
+                  }
+                },
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20), // Add horizontal padding if needed
+                  child: Text(
+                    "Admin Panel",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                      color: Colors.black,
                     ),
-                ],
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

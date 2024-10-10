@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_logistic/widgets/Main_bar.dart';
 
 import '../global/global.dart';
-import '../mainScreens/navigation.dart';
 
 class FirstPage extends StatefulWidget {
   @override
@@ -86,13 +86,13 @@ class _FirstPageState extends State<FirstPage> {
 
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => Navigation()),
+      MaterialPageRoute(builder: (context) => MainScreen()),
     );
 
     final user = FirebaseAuth.instance.currentUser;
     if (user != null) {
       final userDocRef = FirebaseFirestore.instance
-          .collection('barber')
+          .collection('contractors')
           .doc(user.uid);
       await userDocRef.update({'name': name, 'phone': phone, 'address': city});
       updateName(name);

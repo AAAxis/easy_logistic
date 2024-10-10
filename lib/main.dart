@@ -14,7 +14,14 @@ Future<void> main() async
   WidgetsFlutterBinding.ensureInitialized();
 
   sharedPreferences = await SharedPreferences.getInstance();
-  await Firebase.initializeApp();
+
+  try {
+    await Firebase.initializeApp();
+    // Proceed with your app initialization
+  } catch (e) {
+    // Handle Firebase initialization error
+    print("Error initializing Firebase: $e");
+  }
 
   runApp(const MyApp());
 
