@@ -1,10 +1,9 @@
+import 'package:taxiapp/invoice.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:easy_logistic/mainScreens/upload.dart';
-
+import 'package:taxiapp/mainScreens/upload.dart';
 import '../alert.dart';
-import '../invoice.dart';
 import '../slots.dart';
 import '../widgets/merchantOrders.dart';
 import 'edit_store.dart';
@@ -135,6 +134,16 @@ class _AdminPageState extends State<AdminPage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => ProductScreen()),
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.credit_card),
+            title: Text('Payment'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => InvoiceGenerator()),
               );
             },
           ),

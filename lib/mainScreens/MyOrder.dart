@@ -134,7 +134,6 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               // Display cart items
-              Text('Cart Items:', style: TextStyle(fontWeight: FontWeight.bold)),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: widget.order.cartItems.map((cartItem) => Row(
@@ -146,7 +145,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                     ),
                     SizedBox(width: 8), // Add some space between image and text
                     Text(
-                      '${cartItem.name} - Quantity: ${cartItem.quantity}',
+                      '${cartItem.name} - X ${cartItem.quantity}',
                       style: TextStyle(fontSize: 16),
                     ),
                   ],

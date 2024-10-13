@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:easy_logistic/mainScreens/chat_room.dart';
+import 'package:taxiapp/mainScreens/chat_room.dart';
 
 import '../global/global.dart';
 

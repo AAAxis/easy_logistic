@@ -1,6 +1,6 @@
-import 'package:easy_logistic/mainScreens/Map_page.dart';
-import 'package:easy_logistic/mainScreens/chat_screen.dart';
-import 'package:easy_logistic/mainScreens/Account.dart';
+import 'package:taxiapp/mainScreens/Map_page.dart';
+import 'package:taxiapp/mainScreens/chat_screen.dart';
+import 'package:taxiapp/mainScreens/Account.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget

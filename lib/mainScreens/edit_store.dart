@@ -1,7 +1,7 @@
+import 'package:taxiapp/authentication/email_login.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:easy_logistic/authentication/auth_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 
@@ -17,7 +17,7 @@ Future<void> clearSharedPreferences(BuildContext context) async {
     await prefs.clear();
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (c) => LoginScreen()),
+      MaterialPageRoute(builder: (c) => EmailLoginScreen()),
     );
   } catch (e) {
     // Handle any errors here

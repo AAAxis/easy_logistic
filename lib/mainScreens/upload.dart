@@ -1,4 +1,4 @@
-import 'package:easy_logistic/mainScreens/products.dart';
+import 'package:taxiapp/mainScreens/products.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';

@@ -1,11 +1,11 @@
+import 'package:taxiapp/authentication/email_login.dart';
+import 'package:taxiapp/mainScreens/addcar.dart';
 import 'package:flutter/material.dart';
-import 'package:easy_logistic/authentication/auth_screen.dart';
-import 'package:easy_logistic/dashboard.dart';
-import 'package:easy_logistic/global/global.dart';
+import 'package:taxiapp/global/global.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
-import 'package:easy_logistic/widgets/Main_bar.dart';
+import 'package:taxiapp/widgets/Main_bar.dart';
 
 
 class MyDrawerPage extends StatefulWidget {
@@ -30,7 +30,7 @@ class _MyDrawerPageState extends State<MyDrawerPage> {
     await prefs.clear();
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => LoginScreen()),
+      MaterialPageRoute(builder: (context) => EmailLoginScreen()),
     );
   }
 
@@ -58,7 +58,7 @@ class _MyDrawerPageState extends State<MyDrawerPage> {
     });
   }
 
-  int tapCount = 0;
+
 
   @override
 
@@ -87,11 +87,12 @@ class _MyDrawerPageState extends State<MyDrawerPage> {
               image: DecorationImage(
                 fit: BoxFit.cover,
                 // Use AssetImage to load the image from assets
-                image: AssetImage('images/people2.png'),
+                image: AssetImage('images/people.png'),
               ),
             ),
           ),
-          SizedBox(height: 20), // Adding space between the two containers
+          SizedBox(height: 20),
+
           ListTile(
             leading: const Icon(Icons.email, color: Colors.black),
             title: Text(
@@ -120,29 +121,20 @@ class _MyDrawerPageState extends State<MyDrawerPage> {
               style: TextStyle(color: Colors.black),
             ),
           ),
-
-        GestureDetector(
-          onTap: () {
-            setState(() {
-              tapCount++;
-              if (tapCount == 5) {
-                // Navigate to a new page after 3 taps
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Dashboard()),
-                );
-              }
-            });
-          },
-          child: ListTile(
-            contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            leading: const Icon(Icons.language, color: Colors.black),
+          ListTile(
+            leading: const Icon(Icons.directions_car_sharp, color: Colors.black),
             title: const Text(
-              "Language: English",
+              "Vehicle Info",
               style: TextStyle(color: Colors.black),
             ),
-          ),
-        ),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (c) => CarInfoList()),
+              );
+            },
+          ),// Adding
 
 
           const Divider(

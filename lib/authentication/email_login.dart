@@ -4,9 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
-import 'package:easy_logistic/authentication/add_data.dart';
-import 'package:easy_logistic/widgets/Main_bar.dart';
-import '../global/global.dart';
+import 'package:taxiapp/authentication/add_data.dart';
+import 'package:taxiapp/widgets/Main_bar.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -49,8 +48,7 @@ class _EmailLoginScreenState extends State<EmailLoginScreen> {
 
     try {
       final response = await http.get(
-        Uri.parse(
-            'https://polskoydm.pythonanywhere.com/global_auth?email=$email'),
+        Uri.parse('https://polskoydm.pythonanywhere.com/global_auth?email=$email'),
       );
 
       if (response.statusCode == 200) {
@@ -107,7 +105,6 @@ class _EmailLoginScreenState extends State<EmailLoginScreen> {
 
   void verify() async {
     final enteredCode = codeControllers.map((controller) => controller.text).join();
-    bool trackingPermissionStatus = sharedPreferences!.getBool("tracking") ?? false;
 
     if (enteredCode == verificationCode) {
       final email = emailController.text.trim();
@@ -132,100 +129,53 @@ class _EmailLoginScreenState extends State<EmailLoginScreen> {
               .doc(uid)
               .get();
 
-          bool isFirstLogin = !userSnapshot.exists;
-          if (isFirstLogin) {
-            // If the user doesn't exist in Firestore, create a new document
+          if (!userSnapshot.exists) {
+            // User does not exist in the "contractors" collection, so create one
             await FirebaseFirestore.instance.collection("contractors").doc(uid).set({
-              "uid": uid,
-              "name": "Add Full Name",
-              "phone": "Add Phone",
-              "email": userEmail,
-              "address": "Add Location",
-              "status": 'contractor',
-              "trackingPermission": trackingPermissionStatus,
+              'email': userEmail,
+              'name': '', // You can add more fields as needed
+              'phone': '',
+              'address': '',
+              'status': 'contractor',
+              'balance': 0,
             });
 
-            final SharedPreferences prefs = await SharedPreferences.getInstance();
-            prefs.setString("email", userEmail);
-            showDialog(
-              context: context,
-              builder: (context) {
-                return AlertDialog(
-                  title: Text('Verification Successful'),
-                  content: Text('You have successfully verified your email.'),
-                  actions: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                        // Add your logic to navigate to the next screen or perform other actions
-                       readDataAndSetDataLocally(userCredential.user!);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => FirstPage()),
-                        );
-                      },
-                      child: Text('OK'),
-                    ),
-                  ],
-                );
-              },
+            // Optionally navigate to the next page for more data collection
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => FirstPage()),
             );
           } else {
-
+            // User already exists, handle sign-in logic
+            readDataAndSetDataLocally(userCredential.user!);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MainScreen()),
+            );
           }
         } catch (e) {
-          if (e is FirebaseAuthException) {
-            if (e.code == 'email-already-in-use') {
-              // Try to sign in the user with the existing credentials
-              try {
-                userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-                  email: email,
-                  password: password,
-                );
+          if (e is FirebaseAuthException && e.code == 'email-already-in-use') {
+            // Sign in existing user
+            userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+              email: email,
+              password: password,
+            );
 
-                // Handle a successful sign-in
-                if (userCredential.user != null) {
-
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        title: Text('Verification Successful'),
-                        content: Text('You have successfully verified your email.'),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                              readDataAndSetDataLocally(userCredential.user!);
-                              // Add your logic to navigate to the next screen or perform other actions
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => MainScreen()),
-                              );
-                            },
-                            child: Text('OK'),
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                }
-              } catch (e) {
-                // Handle the sign-in error here
-                print('Failed to sign in the user: $e');
-              }
-            } else {
-              // Handle other Firebase Authentication errors
-              print('Failed to create a user account: $e');
-            }
+            // Handle successful sign-in for existing users
+            readDataAndSetDataLocally(userCredential.user!);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MainScreen()),
+            );
+          } else {
+            print('Failed to create a user account: $e');
           }
         }
       } catch (e) {
-        // Handle errors for Firebase Authentication
         print('Error: $e');
       }
     } else {
-      // Verification failed, show an error dialog
+      // Handle verification failure
       showDialog(
         context: context,
         builder: (context) {
@@ -262,6 +212,15 @@ class _EmailLoginScreenState extends State<EmailLoginScreen> {
     });
   }
 
+  void onCodeFieldChanged(int index) {
+    // Automatically submit when the last code field is filled
+    if (index == codeControllers.length - 1 && codeControllers[index].text.length == 1) {
+      verify();
+    } else if (codeControllers[index].text.length == 1) {
+      FocusScope.of(context).nextFocus();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -294,125 +253,81 @@ class _EmailLoginScreenState extends State<EmailLoginScreen> {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
-                child: Text(
-                  "Continue with Email",
-                  textAlign: TextAlign.start,
-                  overflow: TextOverflow.clip,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontStyle: FontStyle.normal,
-                    fontSize: 14,
-                    color: Color(0xff9e9e9e),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Visibility(
-                    visible: !_isEmailSent,
-                    child: TextField(
-                      controller: emailController,
-                      obscureText: false,
-                      textAlign: TextAlign.start,
-                      maxLines: 1,
-                      decoration: InputDecoration(
-                        labelText: "Email",
-                        filled: true,
-                        fillColor: Color(0x00f2f2f3),
-                        isDense: false,
-                        contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+              SizedBox(height: 20),
+
+              // Email field and Send Code button (hide them if _isEmailSent is true)
+              if (!_isEmailSent) ...[
+                Container(
+                  width: MediaQuery.of(context).size.width - 100,
+                  child: TextField(
+                    controller: emailController,
+                    decoration: InputDecoration(
+                      hintText: "Email",
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black),
                       ),
+                      contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                     ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-                child: Align(
-                  alignment: Alignment.center,
-                  child: _isEmailSent
-                      ? Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(6, (index) {
-                      return Container(
-                        width: 40,
-                        margin: EdgeInsets.all(5),
-                        child: TextField(
-                          controller: codeControllers[index],
-                          textAlign: TextAlign.center,
-                          keyboardType: TextInputType.number,
-                          maxLength: 1,
-                          onChanged: (value) {
-                            if (value.length == 1 && index < 5) {
-                              FocusScope.of(context).nextFocus();
-                            }
-                            setState(() {}); // Rebuild the widget to update the button state
-                          },
-                          decoration: InputDecoration(
-                            counterText: '', // Remove character counter
-                            border: OutlineInputBorder(),
-                            contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-                          ),
-                        ),
+                SizedBox(height: 20),
+                TextButton(
+                  onPressed: () {
+                    if (isValidEmail(emailController.text.trim())) {
+                      sendEmail(); // Call sendEmail to trigger email verification
+                      setState(() {
+                        _isEmailSent = true; // Hide email field and button after sending
+                      });
+                    } else {
+                      // Show an error if the email is invalid
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Please enter a valid email')),
                       );
-                    }),
-                  )
-                      : MaterialButton(
-                    onPressed: sendEmail,
-                    color: Color(0xffffffff),
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12.0),
-                      side: BorderSide(color: Color(0xff9e9e9e), width: 1),
-                    ),
-                    padding: EdgeInsets.all(16),
-                    child: Text(
-                      "Send Code",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        fontStyle: FontStyle.normal,
-                      ),
-                    ),
-                    textColor: Color(0xff000000),
-                    height: 40,
-                    minWidth: 140,
+                    }
+                  },
+                  child: Text('Send Code'),
+                  style: TextButton.styleFrom(
+                    side: BorderSide(color: Colors.black),
+                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                   ),
                 ),
-              ),
-              _isEmailSent
-                  ? Padding(
-                padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-                child: Align(
-                  alignment: Alignment.center,
-                  child: MaterialButton(
-                    onPressed: verify,
-                    color: Color(0xffffffff),
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12.0),
-                      side: BorderSide(color: Color(0xff9e9e9e), width: 1),
+              ],
+
+              // Verification code fields (show them only if _isEmailSent is true)
+              if (_isEmailSent)
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(6, (index) {
+                        return Container(
+                          width: 40,
+                          margin: EdgeInsets.symmetric(horizontal: 4),
+                          child: TextField(
+                            controller: codeControllers[index],
+                            keyboardType: TextInputType.number,
+                            maxLength: 1,
+                            textAlign: TextAlign.center,
+                            decoration: InputDecoration(
+                              counterText: '',
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black),
+                              ),
+                            ),
+                            onChanged: (value) {
+                              onCodeFieldChanged(index);
+                            },
+                          ),
+                        );
+                      }),
                     ),
-                    padding: EdgeInsets.all(16),
-                    child: Text(
-                      "Submit",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        fontStyle: FontStyle.normal,
-                      ),
+                    SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: verify,
+                      child: Text('Submit'),
                     ),
-                    textColor: Color(0xff000000),
-                    height: 40,
-                    minWidth: 140,
-                  ),
+                  ],
                 ),
-              )
-                  : SizedBox(),
             ],
           ),
         ),

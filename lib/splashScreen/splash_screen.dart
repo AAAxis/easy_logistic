@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
+import 'package:taxiapp/authentication/email_login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:easy_logistic/authentication/auth_screen.dart';
-import 'package:easy_logistic/widgets/Main_bar.dart';
+import 'package:taxiapp/widgets/Main_bar.dart';
 
 
 class MySplashScreen extends StatefulWidget {
@@ -55,7 +55,7 @@ class _MySplashScreenState extends State<MySplashScreen> {
         // User is not authenticated, navigate to the login screen
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => LoginScreen()),
+          MaterialPageRoute(builder: (context) => EmailLoginScreen()),
         );
       }
     });

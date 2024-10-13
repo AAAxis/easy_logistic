@@ -1,19 +1,16 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.driver_app">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Add these permission tags -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-- Provide required visibility configuration for API level 30 and above -->
+
     <!-- Provide required visibility configuration for API level 30 and above -->
     <queries>
-        <!-- If your app checks for SMS support -->
         <intent>
             <action android:name="android.intent.action.VIEW" />
             <data android:scheme="sms" />
         </intent>
-        <!-- If your app checks for call support -->
         <intent>
             <action android:name="android.intent.action.VIEW" />
             <data android:scheme="tel" />
@@ -23,15 +20,14 @@
             <category android:name="android.intent.category.BROWSABLE" />
             <data android:scheme="https" />
         </intent>
-
     </queries>
+
     <application
-        android:enableOnBackInvokedCallback="true">
+        android:enableOnBackInvokedCallback="true"
         android:usesCleartextTraffic="true"
-        android:label="driver_app"
+        android:label="Easy Logistic"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
-
 
         <activity
             android:name=".MainActivity"
@@ -42,10 +38,6 @@
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize">
 
-            <!-- Specifies an Android theme to apply to this Activity as soon as
-                 the Android process has started. This theme is visible to the user
-                 while the Flutter UI initializes. After that, this theme continues
-                 to determine the Window background behind the Flutter UI. -->
             <meta-data
                 android:name="io.flutter.embedding.android.NormalTheme"
                 android:resource="@style/NormalTheme" />
@@ -67,6 +59,7 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+
         <service
             android:name=".java.MyFirebaseMessagingService"
             android:exported="false">
@@ -78,5 +71,3 @@
     </application>
 
 </manifest>
-
-

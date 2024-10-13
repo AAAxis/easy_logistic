@@ -6,10 +6,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:easy_logistic/mainScreens/MyOrder.dart';
-import 'package:easy_logistic/widgets/balance.dart';
-
-import '../widgets/Main_bar.dart';
+import 'package:taxiapp/mainScreens/MyOrder.dart';
+import 'package:taxiapp/widgets/balance.dart';
 
 
 class HomeTabPage extends StatefulWidget {
@@ -68,8 +66,10 @@ class _HomeTabPageState extends State<HomeTabPage> {
   Future<void> requestLocationPermission() async {
     // Request location permissions
     PermissionStatus permissionStatus = await Permission.location.request();
+
     if (permissionStatus.isDenied) {
       // Permission denied, handle accordingly
+
       // You can show a message to the user explaining why you need location permissions
     }
   }
@@ -170,12 +170,13 @@ class _HomeTabPageState extends State<HomeTabPage> {
                     ),
                     trailing: ElevatedButton(
                       onPressed: () {
+                        // Close all open modals
+                        while (Navigator.canPop(context)) {
+                          Navigator.pop(context);
+                        }
+
                         changeStatusToAssigned(document.id); // Pass the document ID to accept the order
-                        // Navigate to the MainScreen
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (context) => MainScreen()),
-                        );
+
                       },
                       child: Text('Accept'),
                       style: ElevatedButton.styleFrom(

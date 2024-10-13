@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
-import 'package:easy_logistic/mainScreens/addbank.dart';
-import 'package:easy_logistic/widgets/Main_bar.dart';
+import 'package:taxiapp/mainScreens/addbank.dart';
+import 'package:taxiapp/widgets/Main_bar.dart';
 
 import '../global/global.dart';
 

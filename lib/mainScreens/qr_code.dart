@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:easy_logistic/widgets/Main_bar.dart';
+import 'package:taxiapp/widgets/Main_bar.dart';
 
 class YourScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Car Information'),
+        title: Text('QR Code'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -20,7 +20,7 @@ class YourScreen extends StatelessWidget {
       ),
       body: Center(
         child: Image.network(
-          'https://polskoydm.pythonanywhere.com/static/qrcode_theholylabs.com.png',
+          'https://polskoydm.pythonanywhere.com/static/qrcode_theholylabs.vercel.app.png',
           width: 300, // Adjust width as needed
           height: 300, // Adjust height as needed
         ),

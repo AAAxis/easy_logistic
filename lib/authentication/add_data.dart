@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:easy_logistic/widgets/Main_bar.dart';
+import 'package:taxiapp/widgets/Main_bar.dart';
 
 import '../global/global.dart';
 
@@ -22,8 +22,8 @@ class _FirstPageState extends State<FirstPage> {
 
     String storedName = sharedPreferences!.getString("name") ?? "";
     _nameController.text = storedName == "Add Full Name" ? "" : storedName;
-    _phoneController.text = '+972';
-    _addressController.text = 'Tel Aviv';
+    _phoneController.text = '+972'; // Pre-fill with country code
+    _addressController.text = 'Tel Aviv'; // Set default city
 
     _nameController.addListener(_validateInputs);
     _phoneController.addListener(_validateInputs);
@@ -43,7 +43,7 @@ class _FirstPageState extends State<FirstPage> {
     final phone = _phoneController.text.trim();
     final address = _addressController.text.trim();
 
-    // Check if name is not empty and not equal to "Add Full Name", and other fields are not empty and phone is valid
+    // Check if name is not empty, phone is valid, and address is not empty
     final isValid = name.isNotEmpty && address.isNotEmpty && _validatePhone(phone);
 
     setState(() {
@@ -52,12 +52,11 @@ class _FirstPageState extends State<FirstPage> {
   }
 
   bool _validatePhone(String text) {
-    String phonePattern = r'^\+?\d{1,3}?\d{9,12}$'; // Updated pattern for international phone numbers
+    // International phone number validation pattern
+    String phonePattern = r'^\+?\d{1,3}\d{9,12}$';
     RegExp regExp = RegExp(phonePattern);
     return regExp.hasMatch(text);
   }
-
-
 
   void updateName(String newName) {
     setState(() {
@@ -77,17 +76,18 @@ class _FirstPageState extends State<FirstPage> {
     });
   }
 
+
   Future<void> _sendRegistrationEmail() async {
     final email = sharedPreferences?.getString("email");
     final name = _nameController.text.trim();
     final phone = _phoneController.text.trim();
-    final employmentType = 'contractor';
     final city = _addressController.text.trim();
 
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => MainScreen()),
     );
+
 
     final user = FirebaseAuth.instance.currentUser;
     if (user != null) {
@@ -109,7 +109,7 @@ class _FirstPageState extends State<FirstPage> {
       'email': email,
       'name': name,
       'phone': phone,
-      'employmentType': employmentType,
+      'employmentType': 'contractor',
       'city': city,
     };
 
@@ -131,7 +131,7 @@ class _FirstPageState extends State<FirstPage> {
             child: TextField(
               controller: _nameController,
               decoration: InputDecoration(
-                labelText: 'Business Name',
+                labelText: 'Full Name',
                 prefixIcon: Icon(Icons.person),
               ),
             ),
@@ -143,6 +143,7 @@ class _FirstPageState extends State<FirstPage> {
               labelText: 'Phone Number',
               prefixIcon: Icon(Icons.phone),
             ),
+            keyboardType: TextInputType.phone,
           ),
           SizedBox(height: 20.0),
           Center(

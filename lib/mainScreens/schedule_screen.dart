@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:easy_logistic/widgets/Main_bar.dart';
-
+import 'package:taxiapp/widgets/Main_bar.dart';
 import '../global/global.dart';
 
 
@@ -135,19 +134,20 @@ class SlotRow extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'From: ${data['clockIn']} to ${data['clockOut']}',
+                  'From: ${data['clockIn']}',
                   style: TextStyle(fontSize: 14.0),
                 ),
                 Text(
-                  '${data['provider']}',
-                  style: TextStyle(fontSize: 12.0),
+                  'to ${data['clockOut']}',
+                  style: TextStyle(fontSize: 14.0),
                 ),
+
               ],
             ),
           ),
           SizedBox(width: 8.0),
           IconButton(
-            icon: Icon(Icons.archive),
+            icon: Icon(Icons.add_box),
             onPressed: () {
               _moveToSaved(context, data);
             },
@@ -244,13 +244,14 @@ class SavedScheduleRow extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'From: ${data['clockIn']} to ${data['clockOut']}',
+                  'From: ${data['clockIn']}',
                   style: TextStyle(fontSize: 14.0),
                 ),
                 Text(
-                  '${data['provider']}',
-                  style: TextStyle(fontSize: 12.0),
+                  'to ${data['clockOut']}',
+                  style: TextStyle(fontSize: 14.0),
                 ),
+
               ],
             ),
           ),

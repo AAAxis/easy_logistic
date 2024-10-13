@@ -1,8 +1,7 @@
+import 'package:taxiapp/mainScreens/Account.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:easy_logistic/widgets/Main_bar.dart';
-
 
 
 class CarInfoList extends StatelessWidget {
@@ -17,7 +16,7 @@ class CarInfoList extends StatelessWidget {
             Navigator.pop(context);
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (c) => MainScreen()),
+              MaterialPageRoute(builder: (c) => AccountPage()),
             );
           },
         ),
