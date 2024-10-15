@@ -1,0 +1,1 @@
+ /Users/admin/Documents/GitHub/easy_logistic/.dart_tool/flutter_build/0073795f40ec79d1ca2e3aaa0711d9dd/native_assets.yaml: 

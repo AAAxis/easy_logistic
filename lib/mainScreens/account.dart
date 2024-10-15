@@ -235,20 +235,6 @@ class _AccountPageState extends State<AccountPage> {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.qr_code, color: Colors.black),
-            title: const Text(
-              "QR Code",
-              style: TextStyle(color: Colors.black),
-            ),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (c) => YourScreen()),
-              );
-            },
-          ),
-          ListTile(
             leading: const Icon(Icons.language, color: Colors.black),
             title: const Text(
               "Language: English",

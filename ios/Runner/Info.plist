@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Your description for using location when app is in use</string>
+	<string>We need access to you location to assign you to relevant orders</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Your description for using location always</string>
+	<string>We share location to astimate distance to clients</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We need access to your photo library to upload photos for your orders.</string>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
