@@ -1,0 +1,739 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.wheels.taxiapp"
+4    android:versionCode="44"
+5    android:versionName="102" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="28"
+8-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="34" />
+9-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml
+10
+11    <!-- Add these permission tags -->
+12    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+12-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:4:5-79
+12-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:4:22-76
+13    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+13-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:5:5-81
+13-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:5:22-78
+14    <uses-permission android:name="android.permission.INTERNET" />
+14-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:6:5-67
+14-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:6:22-64
+15
+16    <!-- Provide required visibility configuration for API level 30 and above -->
+17    <queries>
+17-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:9:5-23:15
+18        <intent>
+18-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:10:9-13:18
+19            <action android:name="android.intent.action.VIEW" />
+19-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:11:13-65
+19-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:11:21-62
+20
+21            <data android:scheme="sms" />
+21-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:12:13-42
+21-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:12:19-39
+22        </intent>
+23        <intent>
+23-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:14:9-17:18
+24            <action android:name="android.intent.action.VIEW" />
+24-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:11:13-65
+24-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:11:21-62
+25
+26            <data android:scheme="tel" />
+26-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:12:13-42
+26-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:12:19-39
+27        </intent>
+28        <intent>
+28-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:18:9-22:18
+29            <action android:name="android.intent.action.VIEW" />
+29-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:11:13-65
+29-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:11:21-62
+30
+31            <category android:name="android.intent.category.BROWSABLE" />
+31-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:20:13-74
+31-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:20:23-71
+32
+33            <data android:scheme="https" />
+33-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:12:13-42
+33-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:12:19-39
+34        </intent>
+35        <!-- Needs to be explicitly declared on Android R+ -->
+36        <package android:name="com.google.android.apps.maps" />
+36-->[com.google.android.gms:play-services-maps:18.2.0] /Users/admin/.gradle/caches/transforms-3/3e4839edb26d805ec41c87119f2e070d/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:33:9-64
+36-->[com.google.android.gms:play-services-maps:18.2.0] /Users/admin/.gradle/caches/transforms-3/3e4839edb26d805ec41c87119f2e070d/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:33:18-61
+37    </queries>
+38
+39    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+39-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:9:5-77
+39-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:9:22-74
+40    <uses-permission android:name="android.permission.BROADCAST_CLOSE_SYSTEM_DIALOGS" />
+40-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:10:5-89
+40-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:10:22-86
+41    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+41-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:11:5-81
+41-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:11:22-78
+42    <uses-permission android:name="android.permission.VIBRATE" />
+42-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:12:5-66
+42-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:12:22-63
+43    <uses-permission
+43-->[me.carda:AndroidAwnCore:0.9.3] /Users/admin/.gradle/caches/transforms-3/9641833a65a7ea73b7e855d9632c51f8/transformed/jetified-AndroidAwnCore-0.9.3/AndroidManifest.xml:10:5-12:38
+44        android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
+44-->[me.carda:AndroidAwnCore:0.9.3] /Users/admin/.gradle/caches/transforms-3/9641833a65a7ea73b7e855d9632c51f8/transformed/jetified-AndroidAwnCore-0.9.3/AndroidManifest.xml:11:9-77
+45        android:maxSdkVersion="22" /> <!-- Include required permissions for Google Maps API to run. -->
+45-->[me.carda:AndroidAwnCore:0.9.3] /Users/admin/.gradle/caches/transforms-3/9641833a65a7ea73b7e855d9632c51f8/transformed/jetified-AndroidAwnCore-0.9.3/AndroidManifest.xml:12:9-35
+46    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+46-->[com.google.android.gms:play-services-maps:18.2.0] /Users/admin/.gradle/caches/transforms-3/3e4839edb26d805ec41c87119f2e070d/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:23:5-79
+46-->[com.google.android.gms:play-services-maps:18.2.0] /Users/admin/.gradle/caches/transforms-3/3e4839edb26d805ec41c87119f2e070d/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:23:22-76
+47
+48    <uses-feature
+48-->[com.google.android.gms:play-services-maps:18.2.0] /Users/admin/.gradle/caches/transforms-3/3e4839edb26d805ec41c87119f2e070d/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:26:5-28:35
+49        android:glEsVersion="0x00020000"
+49-->[com.google.android.gms:play-services-maps:18.2.0] /Users/admin/.gradle/caches/transforms-3/3e4839edb26d805ec41c87119f2e070d/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:27:9-41
+50        android:required="true" />
+50-->[com.google.android.gms:play-services-maps:18.2.0] /Users/admin/.gradle/caches/transforms-3/3e4839edb26d805ec41c87119f2e070d/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:28:9-32
+51
+52    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+52-->[com.google.android.recaptcha:recaptcha:18.4.0] /Users/admin/.gradle/caches/transforms-3/138b2bb7b02f9ff63cc8829e91561497/transformed/jetified-recaptcha-18.4.0/AndroidManifest.xml:9:5-98
+52-->[com.google.android.recaptcha:recaptcha:18.4.0] /Users/admin/.gradle/caches/transforms-3/138b2bb7b02f9ff63cc8829e91561497/transformed/jetified-recaptcha-18.4.0/AndroidManifest.xml:9:22-95
+53
+54    <permission
+54-->[androidx.core:core:1.13.1] /Users/admin/.gradle/caches/transforms-3/ce9ee94ead9702a676529db6c6d99693/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+55        android:name="com.wheels.taxiapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+55-->[androidx.core:core:1.13.1] /Users/admin/.gradle/caches/transforms-3/ce9ee94ead9702a676529db6c6d99693/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+56        android:protectionLevel="signature" />
+56-->[androidx.core:core:1.13.1] /Users/admin/.gradle/caches/transforms-3/ce9ee94ead9702a676529db6c6d99693/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+57
+58    <uses-permission android:name="com.wheels.taxiapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- for android -->
+58-->[androidx.core:core:1.13.1] /Users/admin/.gradle/caches/transforms-3/ce9ee94ead9702a676529db6c6d99693/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+58-->[androidx.core:core:1.13.1] /Users/admin/.gradle/caches/transforms-3/ce9ee94ead9702a676529db6c6d99693/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+59    <!-- <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/> -->
+60    <!-- <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/> -->
+61    <!-- <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" /> -->
+62    <!-- <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" /> -->
+63    <!-- for Samsung -->
+64    <uses-permission android:name="com.sec.android.provider.badge.permission.READ" />
+64-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:19:5-86
+64-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:19:22-83
+65    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE" /> <!-- for htc -->
+65-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:20:5-87
+65-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:20:22-84
+66    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS" />
+66-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:23:5-81
+66-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:23:22-78
+67    <uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT" /> <!-- for sony -->
+67-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:24:5-83
+67-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:24:22-80
+68    <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE" />
+68-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:27:5-88
+68-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:27:22-85
+69    <uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE" /> <!-- for apex -->
+69-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:28:5-92
+69-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:28:22-89
+70    <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT" /> <!-- for solid -->
+70-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:31:5-84
+70-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:31:22-81
+71    <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE" /> <!-- for huawei -->
+71-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:34:5-83
+71-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:34:22-80
+72    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" />
+72-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:37:5-91
+72-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:37:22-88
+73    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS" />
+73-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:38:5-92
+73-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:38:22-89
+74    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS" /> <!-- for ZUK -->
+74-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:39:5-93
+74-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:39:22-90
+75    <uses-permission android:name="android.permission.READ_APP_BADGE" /> <!-- for OPPO -->
+75-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:42:5-73
+75-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:42:22-70
+76    <uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS" />
+76-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:45:5-82
+76-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:45:22-79
+77    <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS" /> <!-- for EvMe -->
+77-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:46:5-83
+77-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:46:22-80
+78    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_READ" />
+78-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:49:5-88
+78-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:49:22-85
+79    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_WRITE" />
+79-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:50:5-89
+79-->[me.leolin:ShortcutBadger:1.1.22] /Users/admin/.gradle/caches/transforms-3/6100f79249233a811a1d543c9dbd5082/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:50:22-86
+80
+81    <application
+82        android:name="android.app.Application"
+82-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:29:9-42
+83        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+83-->[androidx.core:core:1.13.1] /Users/admin/.gradle/caches/transforms-3/ce9ee94ead9702a676529db6c6d99693/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
+84        android:enableOnBackInvokedCallback="true"
+84-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:26:9-51
+85        android:extractNativeLibs="false"
+86        android:icon="@mipmap/ic_launcher"
+86-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:30:9-43
+87        android:label="Easy Logistic"
+87-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:28:9-38
+88        android:usesCleartextTraffic="true" >
+88-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:27:9-44
+89        <activity
+89-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:32:9-50:20
+90            android:name="com.wheels.taxiapp.MainActivity"
+90-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:33:13-41
+91            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+91-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:37:13-163
+92            android:exported="true"
+92-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:34:13-36
+93            android:hardwareAccelerated="true"
+93-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:38:13-47
+94            android:launchMode="singleTop"
+94-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:35:13-43
+95            android:theme="@style/LaunchTheme"
+95-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:36:13-47
+96            android:windowSoftInputMode="adjustResize" >
+96-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:39:13-55
+97            <meta-data
+97-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:41:13-43:57
+98                android:name="io.flutter.embedding.android.NormalTheme"
+98-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:42:17-72
+99                android:resource="@style/NormalTheme" />
+99-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:43:17-54
+100
+101            <intent-filter>
+101-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:45:13-48:29
+102                <action android:name="android.intent.action.MAIN" />
+102-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:46:17-68
+102-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:46:25-66
+103
+104                <category android:name="android.intent.category.LAUNCHER" />
+104-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:47:17-76
+104-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:47:27-74
+105            </intent-filter>
+106        </activity>
+107
+108        <!-- Place the meta-data for the API key here -->
+109        <meta-data
+109-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:53:9-55:71
+110            android:name="com.google.android.geo.API_KEY"
+110-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:54:13-58
+111            android:value="AIzaSyA1Cn3fZigsdTv-4iBocFqo7cWk2Q5I1MA" />
+111-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:55:13-68
+112
+113        <!--
+114             Don't delete the meta-data below.
+115             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+116        -->
+117        <meta-data
+117-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:59:9-61:33
+118            android:name="flutterEmbedding"
+118-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:60:13-44
+119            android:value="2" />
+119-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:61:13-30
+120
+121        <service
+121-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:63:9-69:19
+122            android:name="com.wheels.taxiapp.java.MyFirebaseMessagingService"
+122-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:64:13-60
+123            android:exported="false" >
+123-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:65:13-37
+124            <intent-filter>
+124-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:66:13-68:29
+125                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+125-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:67:17-78
+125-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:67:25-75
+126            </intent-filter>
+127        </service>
+128
+129        <receiver
+129-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:15:9-17:39
+130            android:name="me.carda.awesome_notifications.DartNotificationActionReceiver"
+130-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:16:13-89
+131            android:exported="true" />
+131-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:17:13-36
+132        <receiver
+132-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:18:9-20:39
+133            android:name="me.carda.awesome_notifications.DartDismissedNotificationReceiver"
+133-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:19:13-92
+134            android:exported="true" />
+134-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:20:13-36
+135        <receiver
+135-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:21:9-23:39
+136            android:name="me.carda.awesome_notifications.DartScheduledNotificationReceiver"
+136-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:22:13-92
+137            android:exported="true" />
+137-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:23:13-36
+138        <receiver
+138-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:24:9-38:20
+139            android:name="me.carda.awesome_notifications.DartRefreshSchedulesReceiver"
+139-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:25:13-87
+140            android:enabled="true"
+140-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:26:13-35
+141            android:exported="true" >
+141-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:27:13-36
+142            <intent-filter>
+142-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:28:13-37:29
+143                <category android:name="android.intent.category.DEFAULT" />
+143-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:29:17-76
+143-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:29:27-73
+144
+145                <action android:name="android.intent.action.BOOT_COMPLETED" />
+145-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:31:17-79
+145-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:31:25-76
+146                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+146-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:32:17-86
+146-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:32:25-83
+147                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+147-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:33:17-84
+147-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:33:25-81
+148                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+148-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:34:17-82
+148-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:34:25-79
+149                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+149-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:35:17-82
+149-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:35:25-79
+150                <action android:name="android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED" />
+150-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:36:17-107
+150-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:36:25-104
+151            </intent-filter>
+152        </receiver>
+153
+154        <service
+154-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:40:9-43:72
+155            android:name="me.carda.awesome_notifications.DartBackgroundService"
+155-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:41:13-80
+156            android:exported="false"
+156-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:42:13-37
+157            android:permission="android.permission.BIND_JOB_SERVICE" />
+157-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:43:13-69
+158        <service
+158-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:44:9-49:43
+159            android:name="me.carda.awesome_notifications.core.services.ForegroundService"
+159-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:45:13-90
+160            android:enabled="true"
+160-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:46:13-35
+161            android:exported="false"
+161-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:47:13-37
+162            android:foregroundServiceType="phoneCall"
+162-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:48:13-54
+163            android:stopWithTask="true" />
+163-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:49:13-40
+164        <service
+164-->[:cloud_firestore] /Users/admin/Documents/GitHub/easy_logistic/build/cloud_firestore/intermediates/merged_manifest/release/AndroidManifest.xml:10:9-14:19
+165            android:name="com.google.firebase.components.ComponentDiscoveryService"
+165-->[:cloud_firestore] /Users/admin/Documents/GitHub/easy_logistic/build/cloud_firestore/intermediates/merged_manifest/release/AndroidManifest.xml:10:18-89
+166            android:directBootAware="true"
+166-->[com.google.firebase:firebase-common:21.0.0] /Users/admin/.gradle/caches/transforms-3/150d2fe39c8c4d4af8c4770b30cc3554/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:32:13-43
+167            android:exported="false" >
+167-->[com.google.firebase:firebase-auth:23.0.0] /Users/admin/.gradle/caches/transforms-3/969f13c452a17ed8d3ddc81f0eeeee6b/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:68:13-37
+168            <meta-data
+168-->[:cloud_firestore] /Users/admin/Documents/GitHub/easy_logistic/build/cloud_firestore/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-13:85
+169                android:name="com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar"
+169-->[:cloud_firestore] /Users/admin/Documents/GitHub/easy_logistic/build/cloud_firestore/intermediates/merged_manifest/release/AndroidManifest.xml:12:17-134
+170                android:value="com.google.firebase.components.ComponentRegistrar" />
+170-->[:cloud_firestore] /Users/admin/Documents/GitHub/easy_logistic/build/cloud_firestore/intermediates/merged_manifest/release/AndroidManifest.xml:13:17-82
+171            <meta-data
+171-->[:firebase_auth] /Users/admin/Documents/GitHub/easy_logistic/build/firebase_auth/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-13:85
+172                android:name="com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar"
+172-->[:firebase_auth] /Users/admin/Documents/GitHub/easy_logistic/build/firebase_auth/intermediates/merged_manifest/release/AndroidManifest.xml:12:17-124
+173                android:value="com.google.firebase.components.ComponentRegistrar" />
+173-->[:firebase_auth] /Users/admin/Documents/GitHub/easy_logistic/build/firebase_auth/intermediates/merged_manifest/release/AndroidManifest.xml:13:17-82
+174            <meta-data
+174-->[:firebase_storage] /Users/admin/Documents/GitHub/easy_logistic/build/firebase_storage/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-13:85
+175                android:name="com.google.firebase.components:io.flutter.plugins.firebase.storage.FlutterFirebaseAppRegistrar"
+175-->[:firebase_storage] /Users/admin/Documents/GitHub/easy_logistic/build/firebase_storage/intermediates/merged_manifest/release/AndroidManifest.xml:12:17-126
+176                android:value="com.google.firebase.components.ComponentRegistrar" />
+176-->[:firebase_storage] /Users/admin/Documents/GitHub/easy_logistic/build/firebase_storage/intermediates/merged_manifest/release/AndroidManifest.xml:13:17-82
+177            <meta-data
+177-->[:firebase_core] /Users/admin/Documents/GitHub/easy_logistic/build/firebase_core/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-13:85
+178                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
+178-->[:firebase_core] /Users/admin/Documents/GitHub/easy_logistic/build/firebase_core/intermediates/merged_manifest/release/AndroidManifest.xml:12:17-124
+179                android:value="com.google.firebase.components.ComponentRegistrar" />
+179-->[:firebase_core] /Users/admin/Documents/GitHub/easy_logistic/build/firebase_core/intermediates/merged_manifest/release/AndroidManifest.xml:13:17-82
+180            <meta-data
+180-->[com.google.firebase:firebase-auth:23.0.0] /Users/admin/.gradle/caches/transforms-3/969f13c452a17ed8d3ddc81f0eeeee6b/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:69:13-71:85
+181                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+181-->[com.google.firebase:firebase-auth:23.0.0] /Users/admin/.gradle/caches/transforms-3/969f13c452a17ed8d3ddc81f0eeeee6b/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:70:17-109
+182                android:value="com.google.firebase.components.ComponentRegistrar" />
+182-->[com.google.firebase:firebase-auth:23.0.0] /Users/admin/.gradle/caches/transforms-3/969f13c452a17ed8d3ddc81f0eeeee6b/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:71:17-82
+183            <meta-data
+183-->[com.google.firebase:firebase-firestore:25.1.0] /Users/admin/.gradle/caches/transforms-3/0450e74297c195284af26573c3048ed0/transformed/jetified-firebase-firestore-25.1.0/AndroidManifest.xml:17:13-19:85
+184                android:name="com.google.firebase.components:com.google.firebase.firestore.FirebaseFirestoreKtxRegistrar"
+184-->[com.google.firebase:firebase-firestore:25.1.0] /Users/admin/.gradle/caches/transforms-3/0450e74297c195284af26573c3048ed0/transformed/jetified-firebase-firestore-25.1.0/AndroidManifest.xml:18:17-122
+185                android:value="com.google.firebase.components.ComponentRegistrar" />
+185-->[com.google.firebase:firebase-firestore:25.1.0] /Users/admin/.gradle/caches/transforms-3/0450e74297c195284af26573c3048ed0/transformed/jetified-firebase-firestore-25.1.0/AndroidManifest.xml:19:17-82
+186            <meta-data
+186-->[com.google.firebase:firebase-firestore:25.1.0] /Users/admin/.gradle/caches/transforms-3/0450e74297c195284af26573c3048ed0/transformed/jetified-firebase-firestore-25.1.0/AndroidManifest.xml:20:13-22:85
+187                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+187-->[com.google.firebase:firebase-firestore:25.1.0] /Users/admin/.gradle/caches/transforms-3/0450e74297c195284af26573c3048ed0/transformed/jetified-firebase-firestore-25.1.0/AndroidManifest.xml:21:17-111
+188                android:value="com.google.firebase.components.ComponentRegistrar" />
+188-->[com.google.firebase:firebase-firestore:25.1.0] /Users/admin/.gradle/caches/transforms-3/0450e74297c195284af26573c3048ed0/transformed/jetified-firebase-firestore-25.1.0/AndroidManifest.xml:22:17-82
+189            <meta-data
+189-->[com.google.firebase:firebase-storage:21.0.0] /Users/admin/.gradle/caches/transforms-3/d5af1ba5af8b51fadb43b1a0b5502c0a/transformed/jetified-firebase-storage-21.0.0/AndroidManifest.xml:30:13-32:85
+190                android:name="com.google.firebase.components:com.google.firebase.storage.FirebaseStorageKtxRegistrar"
+190-->[com.google.firebase:firebase-storage:21.0.0] /Users/admin/.gradle/caches/transforms-3/d5af1ba5af8b51fadb43b1a0b5502c0a/transformed/jetified-firebase-storage-21.0.0/AndroidManifest.xml:31:17-118
+191                android:value="com.google.firebase.components.ComponentRegistrar" />
+191-->[com.google.firebase:firebase-storage:21.0.0] /Users/admin/.gradle/caches/transforms-3/d5af1ba5af8b51fadb43b1a0b5502c0a/transformed/jetified-firebase-storage-21.0.0/AndroidManifest.xml:32:17-82
+192            <meta-data
+192-->[com.google.firebase:firebase-storage:21.0.0] /Users/admin/.gradle/caches/transforms-3/d5af1ba5af8b51fadb43b1a0b5502c0a/transformed/jetified-firebase-storage-21.0.0/AndroidManifest.xml:33:13-35:85
+193                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+193-->[com.google.firebase:firebase-storage:21.0.0] /Users/admin/.gradle/caches/transforms-3/d5af1ba5af8b51fadb43b1a0b5502c0a/transformed/jetified-firebase-storage-21.0.0/AndroidManifest.xml:34:17-107
+194                android:value="com.google.firebase.components.ComponentRegistrar" />
+194-->[com.google.firebase:firebase-storage:21.0.0] /Users/admin/.gradle/caches/transforms-3/d5af1ba5af8b51fadb43b1a0b5502c0a/transformed/jetified-firebase-storage-21.0.0/AndroidManifest.xml:35:17-82
+195            <meta-data
+195-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/admin/.gradle/caches/transforms-3/017543b606c27ad0d2337191631c8234/transformed/jetified-firebase-appcheck-18.0.0/AndroidManifest.xml:25:13-27:85
+196                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckKtxRegistrar"
+196-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/admin/.gradle/caches/transforms-3/017543b606c27ad0d2337191631c8234/transformed/jetified-firebase-appcheck-18.0.0/AndroidManifest.xml:26:17-120
+197                android:value="com.google.firebase.components.ComponentRegistrar" />
+197-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/admin/.gradle/caches/transforms-3/017543b606c27ad0d2337191631c8234/transformed/jetified-firebase-appcheck-18.0.0/AndroidManifest.xml:27:17-82
+198            <meta-data
+198-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/admin/.gradle/caches/transforms-3/017543b606c27ad0d2337191631c8234/transformed/jetified-firebase-appcheck-18.0.0/AndroidManifest.xml:28:13-30:85
+199                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckRegistrar"
+199-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/admin/.gradle/caches/transforms-3/017543b606c27ad0d2337191631c8234/transformed/jetified-firebase-appcheck-18.0.0/AndroidManifest.xml:29:17-117
+200                android:value="com.google.firebase.components.ComponentRegistrar" />
+200-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/admin/.gradle/caches/transforms-3/017543b606c27ad0d2337191631c8234/transformed/jetified-firebase-appcheck-18.0.0/AndroidManifest.xml:30:17-82
+201            <meta-data
+201-->[com.google.firebase:firebase-common-ktx:21.0.0] /Users/admin/.gradle/caches/transforms-3/09d2860b68dd99d91fa4305eff3f3598/transformed/jetified-firebase-common-ktx-21.0.0/AndroidManifest.xml:12:13-14:85
+202                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
+202-->[com.google.firebase:firebase-common-ktx:21.0.0] /Users/admin/.gradle/caches/transforms-3/09d2860b68dd99d91fa4305eff3f3598/transformed/jetified-firebase-common-ktx-21.0.0/AndroidManifest.xml:13:17-116
+203                android:value="com.google.firebase.components.ComponentRegistrar" />
+203-->[com.google.firebase:firebase-common-ktx:21.0.0] /Users/admin/.gradle/caches/transforms-3/09d2860b68dd99d91fa4305eff3f3598/transformed/jetified-firebase-common-ktx-21.0.0/AndroidManifest.xml:14:17-82
+204            <meta-data
+204-->[com.google.firebase:firebase-common:21.0.0] /Users/admin/.gradle/caches/transforms-3/150d2fe39c8c4d4af8c4770b30cc3554/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:35:13-37:85
+205                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
+205-->[com.google.firebase:firebase-common:21.0.0] /Users/admin/.gradle/caches/transforms-3/150d2fe39c8c4d4af8c4770b30cc3554/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:36:17-109
+206                android:value="com.google.firebase.components.ComponentRegistrar" />
+206-->[com.google.firebase:firebase-common:21.0.0] /Users/admin/.gradle/caches/transforms-3/150d2fe39c8c4d4af8c4770b30cc3554/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:37:17-82
+207        </service>
+208
+209        <provider
+209-->[:image_picker_android] /Users/admin/Documents/GitHub/easy_logistic/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:11:9-19:20
+210            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+210-->[:image_picker_android] /Users/admin/Documents/GitHub/easy_logistic/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:12:13-82
+211            android:authorities="com.wheels.taxiapp.flutter.image_provider"
+211-->[:image_picker_android] /Users/admin/Documents/GitHub/easy_logistic/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:13:13-74
+212            android:exported="false"
+212-->[:image_picker_android] /Users/admin/Documents/GitHub/easy_logistic/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:14:13-37
+213            android:grantUriPermissions="true" >
+213-->[:image_picker_android] /Users/admin/Documents/GitHub/easy_logistic/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:15:13-47
+214            <meta-data
+214-->[:image_picker_android] /Users/admin/Documents/GitHub/easy_logistic/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:16:13-18:75
+215                android:name="android.support.FILE_PROVIDER_PATHS"
+215-->[:image_picker_android] /Users/admin/Documents/GitHub/easy_logistic/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:17:17-67
+216                android:resource="@xml/flutter_image_picker_file_paths" />
+216-->[:image_picker_android] /Users/admin/Documents/GitHub/easy_logistic/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:18:17-72
+217        </provider> <!-- Trigger Google Play services to install the backported photo picker module. -->
+218        <service
+218-->[:image_picker_android] /Users/admin/Documents/GitHub/easy_logistic/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:21:9-33:19
+219            android:name="com.google.android.gms.metadata.ModuleDependencies"
+219-->[:image_picker_android] /Users/admin/Documents/GitHub/easy_logistic/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:22:13-78
+220            android:enabled="false"
+220-->[:image_picker_android] /Users/admin/Documents/GitHub/easy_logistic/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:23:13-36
+221            android:exported="false" >
+221-->[:image_picker_android] /Users/admin/Documents/GitHub/easy_logistic/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:24:13-37
+222            <intent-filter>
+222-->[:image_picker_android] /Users/admin/Documents/GitHub/easy_logistic/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:26:13-28:29
+223                <action android:name="com.google.android.gms.metadata.MODULE_DEPENDENCIES" />
+223-->[:image_picker_android] /Users/admin/Documents/GitHub/easy_logistic/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:27:17-94
+223-->[:image_picker_android] /Users/admin/Documents/GitHub/easy_logistic/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:27:25-91
+224            </intent-filter>
+225
+226            <meta-data
+226-->[:image_picker_android] /Users/admin/Documents/GitHub/easy_logistic/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:30:13-32:36
+227                android:name="photopicker_activity:0:required"
+227-->[:image_picker_android] /Users/admin/Documents/GitHub/easy_logistic/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:31:17-63
+228                android:value="" />
+228-->[:image_picker_android] /Users/admin/Documents/GitHub/easy_logistic/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:32:17-33
+229        </service>
+230        <service
+230-->[:geolocator_android] /Users/admin/Documents/GitHub/easy_logistic/build/geolocator_android/intermediates/merged_manifest/release/AndroidManifest.xml:10:9-14:56
+231            android:name="com.baseflow.geolocator.GeolocatorLocationService"
+231-->[:geolocator_android] /Users/admin/Documents/GitHub/easy_logistic/build/geolocator_android/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-77
+232            android:enabled="true"
+232-->[:geolocator_android] /Users/admin/Documents/GitHub/easy_logistic/build/geolocator_android/intermediates/merged_manifest/release/AndroidManifest.xml:12:13-35
+233            android:exported="false"
+233-->[:geolocator_android] /Users/admin/Documents/GitHub/easy_logistic/build/geolocator_android/intermediates/merged_manifest/release/AndroidManifest.xml:13:13-37
+234            android:foregroundServiceType="location" />
+234-->[:geolocator_android] /Users/admin/Documents/GitHub/easy_logistic/build/geolocator_android/intermediates/merged_manifest/release/AndroidManifest.xml:14:13-53
+235        <service
+235-->[:location] /Users/admin/Documents/GitHub/easy_logistic/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:13:9-17:56
+236            android:name="com.lyokone.location.FlutterLocationService"
+236-->[:location] /Users/admin/Documents/GitHub/easy_logistic/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:14:13-71
+237            android:enabled="true"
+237-->[:location] /Users/admin/Documents/GitHub/easy_logistic/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:15:13-35
+238            android:exported="false"
+238-->[:location] /Users/admin/Documents/GitHub/easy_logistic/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:16:13-37
+239            android:foregroundServiceType="location" />
+239-->[:location] /Users/admin/Documents/GitHub/easy_logistic/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:17:13-53
+240
+241        <activity
+241-->[:url_launcher_android] /Users/admin/Documents/GitHub/easy_logistic/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:10:9-13:74
+242            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+242-->[:url_launcher_android] /Users/admin/Documents/GitHub/easy_logistic/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-74
+243            android:exported="false"
+243-->[:url_launcher_android] /Users/admin/Documents/GitHub/easy_logistic/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:12:13-37
+244            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+244-->[:url_launcher_android] /Users/admin/Documents/GitHub/easy_logistic/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:13:13-71
+245
+246        <service
+246-->[me.carda:AndroidAwnCore:0.9.3] /Users/admin/.gradle/caches/transforms-3/9641833a65a7ea73b7e855d9632c51f8/transformed/jetified-AndroidAwnCore-0.9.3/AndroidManifest.xml:21:9-28:19
+247            android:name="me.carda.awesome_notifications.core.managers.StatusBarManager"
+247-->[me.carda:AndroidAwnCore:0.9.3] /Users/admin/.gradle/caches/transforms-3/9641833a65a7ea73b7e855d9632c51f8/transformed/jetified-AndroidAwnCore-0.9.3/AndroidManifest.xml:22:13-89
+248            android:exported="true"
+248-->[me.carda:AndroidAwnCore:0.9.3] /Users/admin/.gradle/caches/transforms-3/9641833a65a7ea73b7e855d9632c51f8/transformed/jetified-AndroidAwnCore-0.9.3/AndroidManifest.xml:23:13-36
+249            android:label="My Notification Listener Service" >
+249-->[me.carda:AndroidAwnCore:0.9.3] /Users/admin/.gradle/caches/transforms-3/9641833a65a7ea73b7e855d9632c51f8/transformed/jetified-AndroidAwnCore-0.9.3/AndroidManifest.xml:24:13-61
+250            <intent-filter>
+250-->[me.carda:AndroidAwnCore:0.9.3] /Users/admin/.gradle/caches/transforms-3/9641833a65a7ea73b7e855d9632c51f8/transformed/jetified-AndroidAwnCore-0.9.3/AndroidManifest.xml:25:13-27:29
+251                <action android:name="android.service.notification.NotificationListenerService" />
+251-->[me.carda:AndroidAwnCore:0.9.3] /Users/admin/.gradle/caches/transforms-3/9641833a65a7ea73b7e855d9632c51f8/transformed/jetified-AndroidAwnCore-0.9.3/AndroidManifest.xml:26:17-99
+251-->[me.carda:AndroidAwnCore:0.9.3] /Users/admin/.gradle/caches/transforms-3/9641833a65a7ea73b7e855d9632c51f8/transformed/jetified-AndroidAwnCore-0.9.3/AndroidManifest.xml:26:25-96
+252            </intent-filter>
+253        </service> <!-- Needs to be explicitly declared on P+ -->
+254        <uses-library
+254-->[com.google.android.gms:play-services-maps:18.2.0] /Users/admin/.gradle/caches/transforms-3/3e4839edb26d805ec41c87119f2e070d/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:39:9-41:40
+255            android:name="org.apache.http.legacy"
+255-->[com.google.android.gms:play-services-maps:18.2.0] /Users/admin/.gradle/caches/transforms-3/3e4839edb26d805ec41c87119f2e070d/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:40:13-50
+256            android:required="false" />
+256-->[com.google.android.gms:play-services-maps:18.2.0] /Users/admin/.gradle/caches/transforms-3/3e4839edb26d805ec41c87119f2e070d/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:41:13-37
+257
+258        <activity
+258-->[com.google.firebase:firebase-auth:23.0.0] /Users/admin/.gradle/caches/transforms-3/969f13c452a17ed8d3ddc81f0eeeee6b/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:29:9-46:20
+259            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+259-->[com.google.firebase:firebase-auth:23.0.0] /Users/admin/.gradle/caches/transforms-3/969f13c452a17ed8d3ddc81f0eeeee6b/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:30:13-80
+260            android:excludeFromRecents="true"
+260-->[com.google.firebase:firebase-auth:23.0.0] /Users/admin/.gradle/caches/transforms-3/969f13c452a17ed8d3ddc81f0eeeee6b/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:31:13-46
+261            android:exported="true"
+261-->[com.google.firebase:firebase-auth:23.0.0] /Users/admin/.gradle/caches/transforms-3/969f13c452a17ed8d3ddc81f0eeeee6b/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:32:13-36
+262            android:launchMode="singleTask"
+262-->[com.google.firebase:firebase-auth:23.0.0] /Users/admin/.gradle/caches/transforms-3/969f13c452a17ed8d3ddc81f0eeeee6b/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:33:13-44
+263            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+263-->[com.google.firebase:firebase-auth:23.0.0] /Users/admin/.gradle/caches/transforms-3/969f13c452a17ed8d3ddc81f0eeeee6b/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:34:13-72
+264            <intent-filter>
+264-->[com.google.firebase:firebase-auth:23.0.0] /Users/admin/.gradle/caches/transforms-3/969f13c452a17ed8d3ddc81f0eeeee6b/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:35:13-45:29
+265                <action android:name="android.intent.action.VIEW" />
+265-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:11:13-65
+265-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:11:21-62
+266
+267                <category android:name="android.intent.category.DEFAULT" />
+267-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:29:17-76
+267-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:29:27-73
+268                <category android:name="android.intent.category.BROWSABLE" />
+268-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:20:13-74
+268-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:20:23-71
+269
+270                <data
+270-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:12:13-42
+271                    android:host="firebase.auth"
+272                    android:path="/"
+273                    android:scheme="genericidp" />
+273-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:12:19-39
+274            </intent-filter>
+275        </activity>
+276        <activity
+276-->[com.google.firebase:firebase-auth:23.0.0] /Users/admin/.gradle/caches/transforms-3/969f13c452a17ed8d3ddc81f0eeeee6b/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:47:9-64:20
+277            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+277-->[com.google.firebase:firebase-auth:23.0.0] /Users/admin/.gradle/caches/transforms-3/969f13c452a17ed8d3ddc81f0eeeee6b/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:48:13-79
+278            android:excludeFromRecents="true"
+278-->[com.google.firebase:firebase-auth:23.0.0] /Users/admin/.gradle/caches/transforms-3/969f13c452a17ed8d3ddc81f0eeeee6b/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:49:13-46
+279            android:exported="true"
+279-->[com.google.firebase:firebase-auth:23.0.0] /Users/admin/.gradle/caches/transforms-3/969f13c452a17ed8d3ddc81f0eeeee6b/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:50:13-36
+280            android:launchMode="singleTask"
+280-->[com.google.firebase:firebase-auth:23.0.0] /Users/admin/.gradle/caches/transforms-3/969f13c452a17ed8d3ddc81f0eeeee6b/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:51:13-44
+281            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+281-->[com.google.firebase:firebase-auth:23.0.0] /Users/admin/.gradle/caches/transforms-3/969f13c452a17ed8d3ddc81f0eeeee6b/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:52:13-72
+282            <intent-filter>
+282-->[com.google.firebase:firebase-auth:23.0.0] /Users/admin/.gradle/caches/transforms-3/969f13c452a17ed8d3ddc81f0eeeee6b/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:53:13-63:29
+283                <action android:name="android.intent.action.VIEW" />
+283-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:11:13-65
+283-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:11:21-62
+284
+285                <category android:name="android.intent.category.DEFAULT" />
+285-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:29:17-76
+285-->[:awesome_notifications] /Users/admin/Documents/GitHub/easy_logistic/build/awesome_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:29:27-73
+286                <category android:name="android.intent.category.BROWSABLE" />
+286-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:20:13-74
+286-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:20:23-71
+287
+288                <data
+288-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:12:13-42
+289                    android:host="firebase.auth"
+290                    android:path="/"
+291                    android:scheme="recaptcha" />
+291-->/Users/admin/Documents/GitHub/easy_logistic/android/app/src/main/AndroidManifest.xml:12:19-39
+292            </intent-filter>
+293        </activity>
+294
+295        <service
+295-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/admin/.gradle/caches/transforms-3/a74429ad6da794682ec4b0ff19550e7a/transformed/jetified-credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:24:9-32:19
+296            android:name="androidx.credentials.playservices.CredentialProviderMetadataHolder"
+296-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/admin/.gradle/caches/transforms-3/a74429ad6da794682ec4b0ff19550e7a/transformed/jetified-credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:25:13-94
+297            android:enabled="true"
+297-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/admin/.gradle/caches/transforms-3/a74429ad6da794682ec4b0ff19550e7a/transformed/jetified-credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:26:13-35
+298            android:exported="false" >
+298-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/admin/.gradle/caches/transforms-3/a74429ad6da794682ec4b0ff19550e7a/transformed/jetified-credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:27:13-37
+299            <meta-data
+299-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/admin/.gradle/caches/transforms-3/a74429ad6da794682ec4b0ff19550e7a/transformed/jetified-credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:29:13-31:104
+300                android:name="androidx.credentials.CREDENTIAL_PROVIDER_KEY"
+300-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/admin/.gradle/caches/transforms-3/a74429ad6da794682ec4b0ff19550e7a/transformed/jetified-credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:30:17-76
+301                android:value="androidx.credentials.playservices.CredentialProviderPlayServicesImpl" />
+301-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/admin/.gradle/caches/transforms-3/a74429ad6da794682ec4b0ff19550e7a/transformed/jetified-credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:31:17-101
+302        </service>
+303
+304        <activity
+304-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/admin/.gradle/caches/transforms-3/a74429ad6da794682ec4b0ff19550e7a/transformed/jetified-credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:34:9-41:20
+305            android:name="androidx.credentials.playservices.HiddenActivity"
+305-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/admin/.gradle/caches/transforms-3/a74429ad6da794682ec4b0ff19550e7a/transformed/jetified-credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:35:13-76
+306            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
+306-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/admin/.gradle/caches/transforms-3/a74429ad6da794682ec4b0ff19550e7a/transformed/jetified-credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:36:13-87
+307            android:enabled="true"
+307-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/admin/.gradle/caches/transforms-3/a74429ad6da794682ec4b0ff19550e7a/transformed/jetified-credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:37:13-35
+308            android:exported="false"
+308-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/admin/.gradle/caches/transforms-3/a74429ad6da794682ec4b0ff19550e7a/transformed/jetified-credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:38:13-37
+309            android:fitsSystemWindows="true"
+309-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/admin/.gradle/caches/transforms-3/a74429ad6da794682ec4b0ff19550e7a/transformed/jetified-credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:39:13-45
+310            android:theme="@style/Theme.Hidden" >
+310-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/admin/.gradle/caches/transforms-3/a74429ad6da794682ec4b0ff19550e7a/transformed/jetified-credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:40:13-48
+311        </activity>
+312        <activity
+312-->[com.google.android.gms:play-services-auth:21.0.0] /Users/admin/.gradle/caches/transforms-3/6ffb20c90b41e67d7e93bd1116711204/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:23:9-27:75
+313            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+313-->[com.google.android.gms:play-services-auth:21.0.0] /Users/admin/.gradle/caches/transforms-3/6ffb20c90b41e67d7e93bd1116711204/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:24:13-93
+314            android:excludeFromRecents="true"
+314-->[com.google.android.gms:play-services-auth:21.0.0] /Users/admin/.gradle/caches/transforms-3/6ffb20c90b41e67d7e93bd1116711204/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:25:13-46
+315            android:exported="false"
+315-->[com.google.android.gms:play-services-auth:21.0.0] /Users/admin/.gradle/caches/transforms-3/6ffb20c90b41e67d7e93bd1116711204/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:26:13-37
+316            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+316-->[com.google.android.gms:play-services-auth:21.0.0] /Users/admin/.gradle/caches/transforms-3/6ffb20c90b41e67d7e93bd1116711204/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:27:13-72
+317        <!--
+318            Service handling Google Sign-In user revocation. For apps that do not integrate with
+319            Google Sign-In, this service will never be started.
+320        -->
+321        <service
+321-->[com.google.android.gms:play-services-auth:21.0.0] /Users/admin/.gradle/caches/transforms-3/6ffb20c90b41e67d7e93bd1116711204/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:33:9-37:51
+322            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+322-->[com.google.android.gms:play-services-auth:21.0.0] /Users/admin/.gradle/caches/transforms-3/6ffb20c90b41e67d7e93bd1116711204/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:34:13-89
+323            android:exported="true"
+323-->[com.google.android.gms:play-services-auth:21.0.0] /Users/admin/.gradle/caches/transforms-3/6ffb20c90b41e67d7e93bd1116711204/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:35:13-36
+324            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+324-->[com.google.android.gms:play-services-auth:21.0.0] /Users/admin/.gradle/caches/transforms-3/6ffb20c90b41e67d7e93bd1116711204/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:36:13-107
+325            android:visibleToInstantApps="true" />
+325-->[com.google.android.gms:play-services-auth:21.0.0] /Users/admin/.gradle/caches/transforms-3/6ffb20c90b41e67d7e93bd1116711204/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:37:13-48
+326
+327        <activity
+327-->[com.google.android.gms:play-services-base:18.3.0] /Users/admin/.gradle/caches/transforms-3/c8adb64dcd8d64a3fa1da78ed79d82be/transformed/jetified-play-services-base-18.3.0/AndroidManifest.xml:20:9-22:45
+328            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+328-->[com.google.android.gms:play-services-base:18.3.0] /Users/admin/.gradle/caches/transforms-3/c8adb64dcd8d64a3fa1da78ed79d82be/transformed/jetified-play-services-base-18.3.0/AndroidManifest.xml:20:19-85
+329            android:exported="false"
+329-->[com.google.android.gms:play-services-base:18.3.0] /Users/admin/.gradle/caches/transforms-3/c8adb64dcd8d64a3fa1da78ed79d82be/transformed/jetified-play-services-base-18.3.0/AndroidManifest.xml:22:19-43
+330            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+330-->[com.google.android.gms:play-services-base:18.3.0] /Users/admin/.gradle/caches/transforms-3/c8adb64dcd8d64a3fa1da78ed79d82be/transformed/jetified-play-services-base-18.3.0/AndroidManifest.xml:21:19-78
+331
+332        <provider
+332-->[com.google.firebase:firebase-common:21.0.0] /Users/admin/.gradle/caches/transforms-3/150d2fe39c8c4d4af8c4770b30cc3554/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:23:9-28:39
+333            android:name="com.google.firebase.provider.FirebaseInitProvider"
+333-->[com.google.firebase:firebase-common:21.0.0] /Users/admin/.gradle/caches/transforms-3/150d2fe39c8c4d4af8c4770b30cc3554/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:24:13-77
+334            android:authorities="com.wheels.taxiapp.firebaseinitprovider"
+334-->[com.google.firebase:firebase-common:21.0.0] /Users/admin/.gradle/caches/transforms-3/150d2fe39c8c4d4af8c4770b30cc3554/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:25:13-72
+335            android:directBootAware="true"
+335-->[com.google.firebase:firebase-common:21.0.0] /Users/admin/.gradle/caches/transforms-3/150d2fe39c8c4d4af8c4770b30cc3554/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:26:13-43
+336            android:exported="false"
+336-->[com.google.firebase:firebase-common:21.0.0] /Users/admin/.gradle/caches/transforms-3/150d2fe39c8c4d4af8c4770b30cc3554/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:27:13-37
+337            android:initOrder="100" />
+337-->[com.google.firebase:firebase-common:21.0.0] /Users/admin/.gradle/caches/transforms-3/150d2fe39c8c4d4af8c4770b30cc3554/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:28:13-36
+338
+339        <uses-library
+339-->[androidx.window:window:1.2.0] /Users/admin/.gradle/caches/transforms-3/971dfc842fe41a326fb65bfddb6323f3/transformed/jetified-window-1.2.0/AndroidManifest.xml:23:9-25:40
+340            android:name="androidx.window.extensions"
+340-->[androidx.window:window:1.2.0] /Users/admin/.gradle/caches/transforms-3/971dfc842fe41a326fb65bfddb6323f3/transformed/jetified-window-1.2.0/AndroidManifest.xml:24:13-54
+341            android:required="false" />
+341-->[androidx.window:window:1.2.0] /Users/admin/.gradle/caches/transforms-3/971dfc842fe41a326fb65bfddb6323f3/transformed/jetified-window-1.2.0/AndroidManifest.xml:25:13-37
+342        <uses-library
+342-->[androidx.window:window:1.2.0] /Users/admin/.gradle/caches/transforms-3/971dfc842fe41a326fb65bfddb6323f3/transformed/jetified-window-1.2.0/AndroidManifest.xml:26:9-28:40
+343            android:name="androidx.window.sidecar"
+343-->[androidx.window:window:1.2.0] /Users/admin/.gradle/caches/transforms-3/971dfc842fe41a326fb65bfddb6323f3/transformed/jetified-window-1.2.0/AndroidManifest.xml:27:13-51
+344            android:required="false" />
+344-->[androidx.window:window:1.2.0] /Users/admin/.gradle/caches/transforms-3/971dfc842fe41a326fb65bfddb6323f3/transformed/jetified-window-1.2.0/AndroidManifest.xml:28:13-37
+345
+346        <meta-data
+346-->[com.google.android.gms:play-services-basement:18.3.0] /Users/admin/.gradle/caches/transforms-3/87532ba4e42aba3e8e8a7f89b1c19583/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:21:9-23:69
+347            android:name="com.google.android.gms.version"
+347-->[com.google.android.gms:play-services-basement:18.3.0] /Users/admin/.gradle/caches/transforms-3/87532ba4e42aba3e8e8a7f89b1c19583/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:22:13-58
+348            android:value="@integer/google_play_services_version" />
+348-->[com.google.android.gms:play-services-basement:18.3.0] /Users/admin/.gradle/caches/transforms-3/87532ba4e42aba3e8e8a7f89b1c19583/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:23:13-66
+349
+350        <provider
+350-->[androidx.emoji2:emoji2:1.2.0] /Users/admin/.gradle/caches/transforms-3/9dc8ccd142ff4a67195c0a01eca8ca36/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+351            android:name="androidx.startup.InitializationProvider"
+351-->[androidx.emoji2:emoji2:1.2.0] /Users/admin/.gradle/caches/transforms-3/9dc8ccd142ff4a67195c0a01eca8ca36/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+352            android:authorities="com.wheels.taxiapp.androidx-startup"
+352-->[androidx.emoji2:emoji2:1.2.0] /Users/admin/.gradle/caches/transforms-3/9dc8ccd142ff4a67195c0a01eca8ca36/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+353            android:exported="false" >
+353-->[androidx.emoji2:emoji2:1.2.0] /Users/admin/.gradle/caches/transforms-3/9dc8ccd142ff4a67195c0a01eca8ca36/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+354            <meta-data
+354-->[androidx.emoji2:emoji2:1.2.0] /Users/admin/.gradle/caches/transforms-3/9dc8ccd142ff4a67195c0a01eca8ca36/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+355                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+355-->[androidx.emoji2:emoji2:1.2.0] /Users/admin/.gradle/caches/transforms-3/9dc8ccd142ff4a67195c0a01eca8ca36/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+356                android:value="androidx.startup" />
+356-->[androidx.emoji2:emoji2:1.2.0] /Users/admin/.gradle/caches/transforms-3/9dc8ccd142ff4a67195c0a01eca8ca36/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+357            <meta-data
+357-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/admin/.gradle/caches/transforms-3/dc2d6c4e86c6f7c66d251dfc3b5bc950/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
+358                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+358-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/admin/.gradle/caches/transforms-3/dc2d6c4e86c6f7c66d251dfc3b5bc950/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
+359                android:value="androidx.startup" />
+359-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/admin/.gradle/caches/transforms-3/dc2d6c4e86c6f7c66d251dfc3b5bc950/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
+360            <meta-data
+360-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/admin/.gradle/caches/transforms-3/2397c7395d3b95789deeb8af2b0bbcd0/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
+361                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+361-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/admin/.gradle/caches/transforms-3/2397c7395d3b95789deeb8af2b0bbcd0/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
+362                android:value="androidx.startup" />
+362-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/admin/.gradle/caches/transforms-3/2397c7395d3b95789deeb8af2b0bbcd0/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
+363        </provider>
+364
+365        <service
+365-->[androidx.room:room-runtime:2.5.0] /Users/admin/.gradle/caches/transforms-3/8afb01db3833ff083382146e622d82e3/transformed/room-runtime-2.5.0/AndroidManifest.xml:24:9-28:63
+366            android:name="androidx.room.MultiInstanceInvalidationService"
+366-->[androidx.room:room-runtime:2.5.0] /Users/admin/.gradle/caches/transforms-3/8afb01db3833ff083382146e622d82e3/transformed/room-runtime-2.5.0/AndroidManifest.xml:25:13-74
+367            android:directBootAware="true"
+367-->[androidx.room:room-runtime:2.5.0] /Users/admin/.gradle/caches/transforms-3/8afb01db3833ff083382146e622d82e3/transformed/room-runtime-2.5.0/AndroidManifest.xml:26:13-43
+368            android:exported="false" />
+368-->[androidx.room:room-runtime:2.5.0] /Users/admin/.gradle/caches/transforms-3/8afb01db3833ff083382146e622d82e3/transformed/room-runtime-2.5.0/AndroidManifest.xml:27:13-37
+369
+370        <receiver
+370-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/admin/.gradle/caches/transforms-3/2397c7395d3b95789deeb8af2b0bbcd0/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
+371            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+371-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/admin/.gradle/caches/transforms-3/2397c7395d3b95789deeb8af2b0bbcd0/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
+372            android:directBootAware="false"
+372-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/admin/.gradle/caches/transforms-3/2397c7395d3b95789deeb8af2b0bbcd0/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
+373            android:enabled="true"
+373-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/admin/.gradle/caches/transforms-3/2397c7395d3b95789deeb8af2b0bbcd0/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
+374            android:exported="true"
+374-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/admin/.gradle/caches/transforms-3/2397c7395d3b95789deeb8af2b0bbcd0/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
+375            android:permission="android.permission.DUMP" >
+375-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/admin/.gradle/caches/transforms-3/2397c7395d3b95789deeb8af2b0bbcd0/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
+376            <intent-filter>
+376-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/admin/.gradle/caches/transforms-3/2397c7395d3b95789deeb8af2b0bbcd0/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
+377                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+377-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/admin/.gradle/caches/transforms-3/2397c7395d3b95789deeb8af2b0bbcd0/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+377-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/admin/.gradle/caches/transforms-3/2397c7395d3b95789deeb8af2b0bbcd0/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
+378            </intent-filter>
+379            <intent-filter>
+379-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/admin/.gradle/caches/transforms-3/2397c7395d3b95789deeb8af2b0bbcd0/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
+380                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+380-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/admin/.gradle/caches/transforms-3/2397c7395d3b95789deeb8af2b0bbcd0/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+380-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/admin/.gradle/caches/transforms-3/2397c7395d3b95789deeb8af2b0bbcd0/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
+381            </intent-filter>
+382            <intent-filter>
+382-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/admin/.gradle/caches/transforms-3/2397c7395d3b95789deeb8af2b0bbcd0/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
+383                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+383-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/admin/.gradle/caches/transforms-3/2397c7395d3b95789deeb8af2b0bbcd0/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+383-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/admin/.gradle/caches/transforms-3/2397c7395d3b95789deeb8af2b0bbcd0/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
+384            </intent-filter>
+385            <intent-filter>
+385-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/admin/.gradle/caches/transforms-3/2397c7395d3b95789deeb8af2b0bbcd0/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
+386                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+386-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/admin/.gradle/caches/transforms-3/2397c7395d3b95789deeb8af2b0bbcd0/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+386-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/admin/.gradle/caches/transforms-3/2397c7395d3b95789deeb8af2b0bbcd0/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
+387            </intent-filter>
+388        </receiver>
+389    </application>
+390
+391</manifest>

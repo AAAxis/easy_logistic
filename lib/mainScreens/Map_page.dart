@@ -27,9 +27,6 @@ class _HomeTabPageState extends State<HomeTabPage> {
   Color driverStatusColor = Colors.green;
   String driverStatusText = "Go Online";
   String appBarTitle = "";
-  late AnimationController _controller;
-  double _swipeOffset = 0.0;
-
 
 
   @override
@@ -240,21 +237,17 @@ class _HomeTabPageState extends State<HomeTabPage> {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Map Screen'),
-
         leading: IconButton(
           icon: Icon(Icons.zoom_in_map),
           onPressed: () {
             // Implement your filtering logic here
           },
         ),
-
-
       ),
       body: Stack(
         children: [
@@ -269,175 +262,91 @@ class _HomeTabPageState extends State<HomeTabPage> {
             },
           ),
           Positioned(
-            top: 10.0, // Adjust the position of the notifications
+            top: 10.0, // Adjust the position of the notification
             left: 10,
             right: 10,
-            child: StreamBuilder<QuerySnapshot>(
-              stream: FirebaseFirestore.instance.collection('notifications').snapshots(),
-              builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                if (!snapshot.hasData) {
-                  return Center(child: CircularProgressIndicator()); // Show a loading indicator while data is loading
-                }
-
-                // Get the list of notification documents from the snapshot
-                var documents = snapshot.data!.docs;
-
-                if (driverStatusText == "Go Offline") {
-                  // Driver is online, show clickable link to open the current task
-                  return GestureDetector(
-                    onTap: () {
-                      // Open the current task when clicked
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 5.0), // Add vertical spacing
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0), // Set the border radius for rounded corners
-                        ),
-                        margin: EdgeInsets.zero, // Remove default margin from Card
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0), // Consistent padding
-                              child: Text(
-                                "Support",
-                                style: TextStyle(
-                                  fontSize: 18.0, // Match font size with notifications
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0), // Consistent padding
-                              child: Text(
-                                "Searching for task, try to change your location close to busy area",
-                                style: TextStyle(
-                                  fontSize: 16.0, // Match font size with notifications
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                          ],
+            child: Container(
+              height: 100.0, // Height of the notification
+              padding: EdgeInsets.all(15.0), // Padding inside the notification
+              color: Colors.white.withOpacity(1.0), // Adjust the background color and opacity
+              child: StreamBuilder(
+                stream: FirebaseFirestore.instance.collection('notifications').snapshots(),
+                builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                  if (!snapshot.hasData) {
+                    return CircularProgressIndicator(); // Show a loading indicator while data is loading
+                  }
+                  // Get the last notification document from the snapshot
+                  var documents = snapshot.data!.docs;
+                  if (documents.isEmpty) {
+                    return Text('No notifications'); // Show a message if there are no notifications
+                  }
+                  var lastNotification = documents.last;
+                  var title = lastNotification['title']; // Assuming 'title' is the field containing the notification title
+                  var body = lastNotification['body']; // Assuming 'body' is the field containing the notification body
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: TextStyle(
+                          fontSize: 20.0, // Adjust the font size of the title
+                          fontWeight: FontWeight.bold, // Apply bold font weight to the title
                         ),
                       ),
-                    ),
-                  );
-                } else if (documents.isEmpty) {
-                  return Text('No notifications'); // Show a message if there are no notifications
-                }
-
-                // Create a list of notification widgets
-                List<Widget> notificationWidgets = documents.map((document) {
-                  var title = document['title']; // Assuming 'title' is the field containing the notification title
-                  var body = document['body']; // Assuming 'body' is the field containing the notification body
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 5.0), // Add vertical spacing between notifications
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0), // Set the border radius for rounded corners
-                      ),
-                      margin: EdgeInsets.zero, // Remove default margin from Card
-                      child: ListTile(
-                        contentPadding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0), // Optional padding for ListTile
-                        title: Text(
-                          title,
-                          style: TextStyle(
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        subtitle: Text(
+                      SizedBox(height: 10.0), // Add some space between the title and body texts
+                      Expanded(
+                        child: Text(
                           body,
                           style: TextStyle(
-                            fontSize: 16.0,
+                            fontSize: 16.0, // Adjust the font size of the body
                           ),
                         ),
-                        // Optional: Add an onTap action for each notification
-                        onTap: () {
-                          // Handle tap on notification
-                        },
                       ),
-                    ),
+                    ],
                   );
-                }).toList();
-
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: notificationWidgets,
-                );
-              },
+                },
+              ),
             ),
           ),
-
-          // Swipe toggle after the map
           Positioned(
-            bottom: 0,
+            bottom: 0, // Position the button 20 pixels from the bottom
             left: 0,
             right: 0,
-            child: GestureDetector(
-              onHorizontalDragUpdate: (details) {
-                setState(() {
-                  _swipeOffset += details.delta.dx; // Update swipe offset
-                });
-              },
-              onHorizontalDragEnd: (details) {
-                if (details.primaryVelocity != null && details.primaryVelocity! > 0) {
-                  // Swipe right to go online
-                  _swipeOffset = 0; // Reset position
-                  setState(() {
-                    driverStatusText = "Go Offline"; // Update status
-                  });
-                  makeDriverOnlineNow(context); // Custom function to make the driver online
-                } else if (details.primaryVelocity != null && details.primaryVelocity! < 0) {
-                  // Swipe left to go offline
-                  _swipeOffset = 0; // Reset position
-                  setState(() {
-                    driverStatusText = "Go Online"; // Update status
-                  });
-                  makeDriverOfflineNow(context); // Custom function to make the driver offline
-                } else {
-                  // If the swipe was too slow, reset the position
-                  setState(() {
-                    _swipeOffset = 0;
-                  });
-                }
-              },
-              child: AnimatedContainer(
-                duration: Duration(milliseconds: 300),
-                transform: Matrix4.translationValues(_swipeOffset, 0, 0), // Animate the swipe
-                height: 100.0,
-                width: double.infinity,
-                color: Colors.blue.shade200,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Row(
-                        children: [
-                          Icon(
-                            driverStatusText == "Go Offline" ? Icons.wifi_off : Icons.wifi,
-                            color: driverStatusText == "Go Offline" ? Colors.red : Colors.green,
-                            size: 40.0,
-                          ),
-                          SizedBox(width: 10.0),
-                          Text(
-                            driverStatusText == "Go Offline"
-                                ? "Swipe left to go offline"
-                                : "Swipe right to go online",
-                            style: TextStyle(fontSize: 18.0),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+            child: Container(
+              height: 60.0, // Adjust the height of the button container
+              child: ElevatedButton(
+                onPressed: () {
+                  if (driverStatusText == "Go Online") {
+                    makeDriverOnlineNow(context);
+                  } else if (driverStatusText == "Go Offline") {
+                    makeDriverOfflineNow(context);
+                  } else {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Container(
+                          height: MediaQuery.of(context).size.height * 0.8,
+                          child: OrderScreen(),
+                        );
+                      },
+                    );
+                  }
+                },
+                child: Text(
+                  driverStatusText, // Use driverStatusText instead of hardcoding button text
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    color: Colors.white,
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: driverStatusColor, // Use driverStatusColor for button color
+                  padding: EdgeInsets.symmetric(vertical: 16.0), // Optional: adjust padding
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero), // No rounded corners
                 ),
               ),
             ),
-          )
-
+          ),
         ],
       ),
     );
@@ -459,43 +368,42 @@ class _HomeTabPageState extends State<HomeTabPage> {
         .get();
 
 
-      await FirebaseFirestore.instance.collection('contractors').doc(uid).update({
-        'status': 'online',
-        'location': GeoPoint(position.latitude, position.longitude),
-      }).then((value) {
-
-      }).catchError((error) {
-        // Handle errors if any
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: $error')),
-        );
-      });
+    await FirebaseFirestore.instance.collection('contractors').doc(uid).update({
+      'status': 'online',
+      'location': GeoPoint(position.latitude, position.longitude),
+    }).then((value) {
+      // Show a snack notification once update is completed
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Driver is now online')),
+      );
+    }).catchError((error) {
+      // Handle errors if any
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: $error')),
+      );
+    });
 
   }
 
   void makeDriverOfflineNow(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    // Update the status in SharedPreferences
     prefs.setString('status', 'offline');
     prefs.setString('current_task', 'searching');
 
-    // Update Firestore
     FirebaseFirestore.instance
         .collection('contractors')
         .doc(prefs.getString("uid")!) // Assuming 'uid' uniquely identifies the driver
         .update({
       'status': 'offline',
-      'current_task': 'searching',
+      'current_task': 'searching', // Assuming you want to set 'current_task' to boolean false, not string 'false'
     }).then((value) {
-      // Reset the swipe offset and update the UI
-      setState(() {
-        _swipeOffset = 0; // Reset the position to show the offline state correctly
-        driverStatusText = "Go Online"; // Update the status text
-        driverStatusColor = Colors.green; // Update the status color
-      });
+      // Show a snack notification once update is completed
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Driver is now offline')),
+      );
 
-      // Navigate to the MainScreen or any other relevant screen
+      // Navigate to the MainScreen
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => PaymentScreen()),
@@ -507,5 +415,4 @@ class _HomeTabPageState extends State<HomeTabPage> {
       );
     });
   }
-
 }
